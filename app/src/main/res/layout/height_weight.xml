@@ -73,5 +73,30 @@
         app:layout_constraintStart_toEndOf="@+id/editText"
         app:layout_constraintTop_toBottomOf="@+id/height_unit" />
 
+    <TextView
+        android:id="@+id/text_bmi"
+        android:layout_width="272dp"
+        android:layout_height="125dp"
+        android:text=""
+        tools:layout_editor_absoluteX="69dp"
+        tools:layout_editor_absoluteY="408dp" />
+
+    <Button
+        android:id="@+id/height_weight_button"
+        android:layout_width="170dp"
+        android:layout_height="52dp"
+        android:text="次へ"
+        android:backgroundTint="ffc0cb"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="630dp" />
+
+    <TextView
+        android:id="@+id/bmi_result"
+        android:layout_width="83dp"
+        android:layout_height="29dp"
+        android:text="BMI測定結果"
+        app:layout_constraintBottom_toTopOf="@+id/text_bmi"
+        tools:layout_editor_absoluteX="62dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
