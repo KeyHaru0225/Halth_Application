@@ -86,7 +86,7 @@
         android:layout_width="170dp"
         android:layout_height="52dp"
         android:text="次へ"
-        android:backgroundTint="ffc0cb"
+        app:backgroundTint="#ffc0cb"
         tools:layout_editor_absoluteX="120dp"
         tools:layout_editor_absoluteY="630dp" />
 

@@ -1,14 +1,14 @@
 package to.msn.wings.healthapplication;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.Navigation;
 
 
-public class height_weightFragment extends Fragment {
+public class height_weightFragment extends AppCompatActivity {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
