@@ -1,6 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-</LinearLayout>
+　　 // 「日付　2021/6/30 WED」のようにする
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="182dp"
+        android:layout_height="58dp"
+        android:text="日付"
+        android:gravity="center"
+        android:textSize="40dp"
+        tools:layout_editor_absoluteX="114dp"
+        tools:layout_editor_absoluteY="7dp"
+        tools:layout_editor_absoluteX="114dp"
+        tools:layout_editor_absoluteY="7dp" />
+
+    <Button
+        android:id="@+id/initial_button1"
+        android:layout_width="87dp"
+        android:layout_height="68dp"
+        android:text="＜"
+        android:textColor="#808080"
+        android:textSize="20dp"
+        app:backgroundTint="#FFFFFF"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="4dp" />
+
+    <Button
+        android:id="@+id/initial_button2"
+        android:layout_width="87dp"
+        android:layout_height="68dp"
+        android:text="＞"
+        android:textColor="#808080"
+        android:textSize="20dp"
+        app:backgroundTint="#FFFFFF"
+        tools:layout_editor_absoluteX="330dp"
+        tools:layout_editor_absoluteY="4dp" />
+
+    // text　記入していない時のif文作成　する
+    <EditText
+        android:id="@+id/initial_message"
+        android:layout_width="409dp"
+        android:layout_height="56dp"
+        android:text="昨日は ㎏だったよ"
+        android:gravity="center"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="72dp" />
+
+    <TextView
+        android:id="@+id/initial_weight"
+        android:layout_width="182dp"
+        android:layout_height="58dp"
+        android:text="体重"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="128dp" />
+
+    //　前日比を計算、自動記入されるようにする(Java)
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        android:text="前日比"
+        tools:layout_editor_absoluteX="262dp"
+        tools:layout_editor_absoluteY="128dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="393dp"
+        android:layout_height="44dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="192dp" />
+
+    //　アイコン6つ入れる(横並び)
+
+    //　写真を添付できるようにする(暫定的にTextViewにしている)
+    <TextView
+        android:id="@+id/morning"
+        android:layout_width="124dp"
+        android:layout_height="131dp"
+        android:text=""
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="236dp" />
+
+    <TextView
+        android:id="@+id/lunch"
+        android:layout_width="124dp"
+        android:layout_height="131dp"
+        android:text=""
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="236dp" />
+
+    <TextView
+        android:id="@+id/dinner"
+        android:layout_width="124dp"
+        android:layout_height="131dp"
+        android:text=""
+        tools:layout_editor_absoluteX="285dp"
+        tools:layout_editor_absoluteY="236dp" />
+
+    <TextView
+        android:id="@+id/snack"
+        android:layout_width="415dp"
+        android:layout_height="67dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="374dp" />
+
+    //　ユーザーがメモを記入できるようにする
+    <TextView
+        android:id="@+id/initial_memo"
+        android:layout_width="406dp"
+        android:layout_height="156dp"
+        android:text=""
+        tools:layout_editor_absoluteY="447dp" />
+
+    <Button
+        android:id="@+id/initial_completed"
+        android:layout_width="150dp"
+        android:layout_height="41dp"
+        android:text="登録"
+        app:backgroundTint="#ffc0cb"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="615dp" />
+
+    //　アイコン5つ入れる
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
