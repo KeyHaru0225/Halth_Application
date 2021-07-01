@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-</LinearLayout>
+    //　Textにその日の日付が入るようにする
+
+    <TextView
+        android:id="@+id/graph_date"
+        android:layout_width="412dp"
+        android:layout_height="70dp"
+        android:text=""
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="-10dp" />
+
+    //　グラフを入れる箇所
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="415dp"
+        android:layout_height="585dp"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="57dp" />
+
+    //　アイコン5つ入れる
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
