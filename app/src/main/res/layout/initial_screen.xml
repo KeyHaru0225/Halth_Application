@@ -61,7 +61,7 @@
 
     //　前日比を計算、自動記入されるようにする(Java)
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/the_day_before"
         android:layout_width="wrap_content"
         android:layout_height="58dp"
         android:text="前日比"
@@ -74,7 +74,7 @@
         android:layout_height="44dp"
         android:text="TextView"
         tools:layout_editor_absoluteX="9dp"
-        tools:layout_editor_absoluteY="192dp" />
+        tools:layout_editor_absoluteY="192dp" /> //アイコン
 
     //　アイコン6つ入れる(横並び)
 
