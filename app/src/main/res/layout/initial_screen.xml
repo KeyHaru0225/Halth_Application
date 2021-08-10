@@ -6,7 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-　　 // 「日付　2021/6/30 WED」のようにする
+    　　 // 「日付　2021/6/30 WED」のようにする
+
+
+    <Button
+        android:id="@+id/morning_button"
+        android:layout_width="122dp"
+        android:layout_height="29dp"
+        android:text="朝食"
+        app:backgroundTint="#ffc0cb"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="230dp" />
+
+    <Button
+        android:id="@+id/lunch_button"
+        android:layout_width="125dp"
+        android:layout_height="29dp"
+        android:text="昼食"
+        app:backgroundTint="#ffc0cb"
+        tools:layout_editor_absoluteX="285dp"
+        tools:layout_editor_absoluteY="230dp" />
+
+    <Button
+        android:id="@+id/evening_button"
+        android:layout_width="125dp"
+        android:layout_height="29dp"
+        android:text="夕食"
+        app:backgroundTint="#ffc0cb"
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="230dp" />
+
     <TextView
         android:id="@+id/initial_date"
         android:layout_width="182dp"
@@ -68,48 +97,113 @@
         tools:layout_editor_absoluteX="262dp"
         tools:layout_editor_absoluteY="128dp" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="393dp"
-        android:layout_height="44dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="9dp"
-        tools:layout_editor_absoluteY="192dp" /> //アイコン
 
-    //　アイコン6つ入れる(横並び)
 
-    //　写真を添付できるようにする(暫定的にTextViewにしている)
-    <TextView
-        android:id="@+id/morning"
-        android:layout_width="124dp"
-        android:layout_height="131dp"
-        android:text=""
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="236dp" />
+    //アイコン
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true"
+        android:drawable="@drawable/moon_32" />
+        <item android:drawable="@drawable/moon_32_off" />
 
-    <TextView
-        android:id="@+id/lunch"
-        android:layout_width="124dp"
-        android:layout_height="131dp"
-        android:text=""
-        tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="236dp" />
+    <ImageView
+        android:id="@+id/imageView_moon"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/moon_32"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="190dp" />
 
-    <TextView
-        android:id="@+id/dinner"
-        android:layout_width="124dp"
-        android:layout_height="131dp"
-        android:text=""
-        tools:layout_editor_absoluteX="285dp"
-        tools:layout_editor_absoluteY="236dp" />
+    <item android:drawable="" />
 
-    <TextView
-        android:id="@+id/snack"
-        android:layout_width="415dp"
-        android:layout_height="67dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="374dp" />
+
+
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/food_32"
+        android:state_selected="true"
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="186dp" />
+    <item android:drawable="@drawable/food_32_off" />
+
+    <ImageView
+        android:id="@+id/imageView_food"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView_moon"
+        app:srcCompat="@drawable/food_32"
+        tools:layout_editor_absoluteY="190dp" />
+
+    <item android:drawable="" />
+
+
+
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true"
+        android:drawable="@drawable/toilet_32" />
+        <item android:drawable="@drawable/toilet_32_off" />
+
+    <ImageView
+        android:id="@+id/imageView_toilet"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/toilet_32"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="190dp" />
+
+    <item android:drawable="" />
+
+
+
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true"
+        android:drawable="@drawable/exercise_32" />
+        <item android:drawable="@drawable/exercise_32_off" />
+
+    <ImageView
+        android:id="@+id/imageView_exercise"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/exercise_32"
+        tools:layout_editor_absoluteX="183dp"
+        tools:layout_editor_absoluteY="190dp" />
+
+    <item android:drawable="" />
+
+
+
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true"
+        android:drawable="@drawable/smile_32" />
+        <item android:drawable="@drawable/smile_32_off" />
+
+    <ImageView
+        android:id="@+id/imageView_smile"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/smile_32"
+        tools:layout_editor_absoluteX="262dp"
+        tools:layout_editor_absoluteY="190dp" />
+
+    <item android:drawable="" />
+
+
+
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true"
+        android:drawable="@drawable/complain_32" />　
+        <item android:drawable="@drawable/complain_32_off" />
+
+    <ImageView
+        android:id="@+id/imageView_complain"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView_smile"
+        app:srcCompat="@drawable/complain_32"
+        tools:layout_editor_absoluteY="190dp" />
+
+    <item android:drawable="" />
+
+
 
     //　ユーザーがメモを記入できるようにする
     <TextView
@@ -128,7 +222,143 @@
         tools:layout_editor_absoluteX="130dp"
         tools:layout_editor_absoluteY="615dp" />
 
+
+
+    // 画像読み込み処理
+
+    <ImageView
+        android:id="@+id/image_view_morning"
+        android:layout_width="125dp"
+        android:layout_height="111dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="257dp" />
+
+    <ImageView
+        android:id="@+id/image_view_lunch"
+        android:layout_width="124dp"
+        android:layout_height="111dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="257dp" />
+
+    <ImageView
+        android:id="@+id/image_view_evening"
+        android:layout_width="124dp"
+        android:layout_height="111dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        tools:layout_editor_absoluteX="285dp"
+        tools:layout_editor_absoluteY="257dp" />
+
+    <ImageView
+        android:id="@+id/image_view_snack"
+        android:layout_width="415dp"
+        android:layout_height="67dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        tools:layout_editor_absoluteX="-6dp"
+        tools:layout_editor_absoluteY="380dp" />
+
+
+
     //　アイコン5つ入れる
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true"
+        android:drawable="@drawable/input_32" />　
+    <item android:drawable="@drawable/input_32_off" />
+
+    <ImageView
+        android:id="@+id/imageView_input"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/input_32"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="675dp" />
+
+    <item android:drawable="" />
+
+
+
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true"
+        android:drawable="@drawable/calendar_32" />　
+    <item android:drawable="@drawable/calendar_32_off" />
+
+    <ImageView
+        android:id="@+id/imageView_calendar"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView_input"
+        app:srcCompat="@drawable/calendar_32"
+        tools:layout_editor_absoluteY="675dp" />
+
+    <item android:drawable="" />
+
+
+
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true"
+        android:drawable="@drawable/graph_32" />　
+    <item android:drawable="@drawable/graph_32_off" />
+
+    <ImageView
+        android:id="@+id/imageView_graph"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView_calendar"
+        app:srcCompat="@drawable/graph_32"
+        tools:layout_editor_absoluteY="675dp" />
+
+    <item android:drawable="" />
+
+
+
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@drawable/food_32"
+        android:state_selected="true"
+        app:layout_constraintStart_toEndOf="@+id/imageView_moon"
+        tools:layout_editor_absoluteY="186dp" />
+    <item android:drawable="@drawable/food_32_off" />
+
+    <ImageView
+        android:id="@+id/imageView_food"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView_graph"
+        app:srcCompat="@drawable/food_32"
+        tools:layout_editor_absoluteY="675dp" />
+
+    <item android:drawable="" />
+
+
+
+    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true"
+        android:drawable="@drawable/exercise_32" />
+    <item android:drawable="@drawable/exercise_32_off" />
+
+    <ImageView
+        android:id="@+id/imageView_exercise"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        app:srcCompat="@drawable/exercise_32"
+        tools:layout_editor_absoluteX="350dp"
+        tools:layout_editor_absoluteY="675dp" />
+
+    <item android:drawable="" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

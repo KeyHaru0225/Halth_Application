@@ -26,7 +26,12 @@ public class height_weightFragment extends AppCompatActivity {
         mWeight = (EditText) findViewById(R.id.weight); //　ユーザーが入力するフィールド(体重)
         mText_bmi = (TextView) findViewById(R.id.text_bmi); // BMI値
         mHeight_weight_button = (Button) findViewById(R.id.height_weight_button);  //　ボタン
+
+        ViewPager pager = findViewById(R.id.)
     }
+
+
+
 
     //
     private EditText mHeight;
