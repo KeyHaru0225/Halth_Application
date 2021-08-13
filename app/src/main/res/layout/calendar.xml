@@ -1,184 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+
     tools:context=".MainActivity">
 
-    　　 // 「日付　2021/6/30 WED」のようにする
-
-    //　該当月のカレンダー(日曜始まり、土曜終わり)が表示されるようにコーディングする
-    //　各マスにマークや体重が見えるようにする
-
-    <Button
-        android:id="@+id/calendar_button1"
-        android:layout_width="68dp"
-        android:layout_height="70dp"
-        android:text="＜"
-        android:textColor="#808080"
-        android:textSize="20dp"
-        app:backgroundTint="#FFFFFF"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <TextView
-        android:id="@+id/calendar_month"
-        android:layout_width="87dp"
-        android:layout_height="70dp"
-        android:gravity="center"
-        android:text="今月"
-        android:textSize="30dp"
-        tools:layout_editor_absoluteX="314dp"
-        tools:layout_editor_absoluteY="0dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginVertical="1dp"
+        android:orientation="horizontal">
 
 
-    //　Textにその日の日付・曜日が入るようにコーディングする
+        <Button
+            android:id="@+id/prevButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginVertical="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/colorAccent"
+            android:text="Prev" />
 
-    // Textにその日の体重が入るようにコーディングする
-
-    // BMIの隣に数値が入るようにコーディングする
-
-    <Button
-        android:id="@+id/calendar_button2"
-        android:layout_width="68dp"
-        android:layout_height="70dp"
-        android:text="＞"
-        android:textColor="#808080"
-        android:textSize="20dp"
-        app:backgroundTint="#FFFFFF"
-        tools:layout_editor_absoluteX="246dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-
-    //　アイコン5つ入れる
-
-    <TextView
-        android:id="@+id/calendar_date2"
-        android:layout_width="134dp"
-        android:layout_height="48dp"
-        android:text=""
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="554dp" />
-
-    <TextView
-        android:id="@+id/calendar_weight"
-        android:layout_width="137dp"
-        android:layout_height="64dp"
-        android:gravity="center"
-        android:text="㎏"
-        android:textSize="20dp"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="602dp" />
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="91dp"
+            android:layout_height="58dp"
+            android:layout_marginStart="63dp"
+            android:layout_marginLeft="63dp"
+            android:layout_marginEnd="69dp"
+            android:layout_marginRight="69dp"
+            android:layout_toStartOf="@+id/nextButton"
+            android:layout_toLeftOf="@+id/nextButton"
+            android:layout_toEndOf="@+id/prevButton"
+            android:layout_toRightOf="@+id/prevButton"
+            android:text="2021.8"
+            android:textSize="20sp" />
 
 
-    <TextView
-        android:id="@+id/calendar_bmi"
-        android:layout_width="137dp"
-        android:layout_height="64dp"
-        android:gravity="center"
-        android:text="BMI"
-        android:textSize="20dp"
-        tools:layout_editor_absoluteX="227dp"
-        tools:layout_editor_absoluteY="602dp" />
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginVertical="10dp"
+            android:layout_marginRight="1dp"
+            android:background="@color/colorAccent"
+            android:text="Next" />
+    </LinearLayout>
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true"
-        android:drawable="@drawable/input_32" />　
-    <item android:drawable="@drawable/input_32_off" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:orientation="horizontal"
+        android:layout_marginVertical="1dp">
 
-    <ImageView
-        android:id="@+id/imageView_input"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/input_32"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="675dp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="1dp"
+            android:textAlignment="center"
+            android:text="日"
+            android:background="@color/whiteColor"
+            android:textColor="@color/redColor"/>
 
-    <item android:drawable="" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:layout_weight="1"
+            android:background="@color/whiteColor"
+            android:text="月"
+            android:textColor="@color/blackColor"
+            android:textAlignment="center"/>
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="1dp"
+            android:textAlignment="center"
+            android:text="火"
+            android:textColor="@color/blackColor"
+            android:background="@color/whiteColor"/>
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="1dp"
+            android:textAlignment="center"
+            android:text="水"
+            android:textColor="@color/blackColor"
+            android:background="@color/whiteColor"/>
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true"
-        android:drawable="@drawable/calendar_32" />　
-    <item android:drawable="@drawable/calendar_32_off" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="1dp"
+            android:textAlignment="center"
+            android:text="木"
+            android:textColor="@color/blackColor"
+            android:background="@color/whiteColor"/>
 
-    <ImageView
-        android:id="@+id/imageView_calendar"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView_input"
-        app:srcCompat="@drawable/calendar_32"
-        tools:layout_editor_absoluteY="675dp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="1dp"
+            android:textAlignment="center"
+            android:text="金"
+            android:textColor="@color/blackColor"
+            android:background="@color/whiteColor"/>
 
-    <item android:drawable="" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="1dp"
+            android:textAlignment="center"
+            android:text="土"
+            android:textColor="@color/blueColor"
+            android:background="@color/whiteColor"/>
 
+        <GridView
+            android:id="@+id/calendarGridView"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginLeft="1dp"
+            android:layout_weight="15"
+            android:horizontalSpacing="1dp"
+            android:numColumns="7"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="1dp">
 
-
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true"
-        android:drawable="@drawable/graph_32" />　
-    <item android:drawable="@drawable/graph_32_off" />
-
-    <ImageView
-        android:id="@+id/imageView_graph"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginLeft="36dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView_calendar"
-        app:srcCompat="@drawable/graph_32"
-        tools:layout_editor_absoluteY="675dp" />
-
-    <item android:drawable="" />
-
-
-
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item
-        android:drawable="@drawable/food_32"
-        android:state_selected="true"
-        app:layout_constraintStart_toEndOf="@+id/imageView_moon"
-        tools:layout_editor_absoluteY="186dp" />
-    <item android:drawable="@drawable/food_32_off" />
-
-    <ImageView
-        android:id="@+id/imageView_food"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView_graph"
-        app:srcCompat="@drawable/food_32"
-        tools:layout_editor_absoluteY="675dp" />
-
-    <item android:drawable="" />
-
-
-
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true"
-        android:drawable="@drawable/exercise_32" />
-    <item android:drawable="@drawable/exercise_32_off" />
-
-    <ImageView
-        android:id="@+id/imageView_exercise"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        app:srcCompat="@drawable/exercise_32"
-        tools:layout_editor_absoluteX="350dp"
-        tools:layout_editor_absoluteY="675dp" />
-
-    <item android:drawable="" />
+        </GridView>
 
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="129dp"
+        android:layout_marginVertical="1dp"
+        android:orientation="horizontal">
+
+        <selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+            android:drawable="@drawable/calendar_32"
+            android:state_selected="true" />　
+
+        <item android:drawable="@drawable/calendar_32_off" />
+
+        <ImageView
+            android:id="@+id/imageView_calendar"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="70dp"
+            android:layout_toStartOf="@+id/imageView_graph"
+            android:layout_toLeftOf="@+id/imageView_graph"
+            android:layout_toEndOf="@+id/imageView_graph"
+            android:layout_toRightOf="@+id/imageView_graph"
+            app:layout_constraintStart_toEndOf="@+id/imageView_input"
+            app:srcCompat="@drawable/calendar_32"
+            tools:layout_editor_absoluteY="675dp" />
+
+        <item android:drawable="" />
 
 
+        <selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+            android:drawable="@drawable/graph_32"
+            android:state_selected="true" />　
+
+        <item android:drawable="@drawable/graph_32_off" />
+
+        <ImageView
+            android:id="@+id/imageView_graph"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="70dp"
+            app:layout_constraintStart_toEndOf="@+id/imageView_calendar"
+            app:srcCompat="@drawable/graph_32"
+            tools:layout_editor_absoluteY="675dp" />
+
+        <item android:drawable="" />
 
 
+        <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <item
+            android:drawable="@drawable/food_32"
+            android:state_selected="true"
+            app:layout_constraintStart_toEndOf="@+id/imageView_moon"
+            tools:layout_editor_absoluteY="186dp" />
+
+        <item android:drawable="@drawable/food_32_off" />
+
+        <ImageView
+            android:id="@+id/imageView_food"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="70dp"
+            app:layout_constraintStart_toEndOf="@+id/imageView_graph"
+            app:srcCompat="@drawable/food_32"
+            tools:layout_editor_absoluteY="675dp" />
+
+        <item android:drawable="" />
+
+
+        <selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+            android:drawable="@drawable/exercise_32"
+            android:state_selected="true" />
+
+        <item android:drawable="@drawable/exercise_32_off" />
+
+        <ImageView
+            android:id="@+id/imageView_exercise"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="70dp"
+            app:srcCompat="@drawable/exercise_32"
+            tools:layout_editor_absoluteX="350dp"
+            tools:layout_editor_absoluteY="675dp" />
+
+        <item android:drawable="" />
+
+
+    </LinearLayout>
