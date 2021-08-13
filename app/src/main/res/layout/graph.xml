@@ -17,8 +17,8 @@
         tools:layout_editor_absoluteY="-10dp" />
 
     //　グラフを入れる箇所
-    <TextView
-        android:id="@+id/textView2"
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
         android:layout_width="415dp"
         android:layout_height="585dp"
         android:text="TextView"
