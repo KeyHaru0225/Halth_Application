@@ -20,19 +20,16 @@
     //　グラフを入れる箇所
     <TextView
         android:text="@string/app_name"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:gravity="center"
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/lineChart"
-        android:layout_width="415dp"
-        android:layout_height="585dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="57dp" />
+        android:id="@+id/line_chart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     //　アイコン5つ入れる
     //　アイコン5つ入れる

@@ -17,7 +17,7 @@
         android:ems="10"
         android:gravity="center"
         android:layoutType="textPersonHeight"
-        android:text="設定　データバックアップ/復元"
+        android:text="設定　データバックアップ"
         android:textSize="20dp"
         tools:layout_editor_absoluteX="87dp"
         tools:layout_editor_absoluteY="0dp" />
@@ -47,7 +47,7 @@
         android:id="@+id/setting_data3"
         android:layout_width="412dp"
         android:layout_height="153dp"
-        android:text="過去に記録してきたデータをCSVファイルとして出力することができます。\nこれから機種変更をされる際は、自分宛にメールで送るなどして、バックアップとして保存しましょう。"
+        android:text="過去に記録してきたデータをPDFファイルとして出力することができます。\nこれから機種変更をされる際は、自分宛にメールで送るなどして、バックアップとして保存しましょう。"
         android:textSize="20dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="166dp" />

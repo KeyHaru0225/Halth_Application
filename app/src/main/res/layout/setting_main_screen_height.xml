@@ -35,11 +35,10 @@
 
 
     // textで身長が入力出来るようにする
-    <TextView
+    <EditText
         android:id="@+id/setting_main_screen_height2"
         android:layout_width="256dp"
         android:layout_height="160dp"
-        android:text=""
         tools:layout_editor_absoluteX="67dp"
         tools:layout_editor_absoluteY="208dp" />
 

@@ -7,6 +7,15 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="82dp"
+        android:layout_height="47dp"
+        android:gravity="center"
+        android:text="体重"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="261dp" />
+
+    <TextView
         android:id="@+id/first_height_weight"
         android:layout_width="417dp"
         android:layout_height="56dp"
@@ -23,15 +32,14 @@
 
     <EditText
         android:id="@+id/height"
-        android:layout_width="345dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="156dp"
+        android:layout_width="186dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="148dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:text="身長"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.525"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,33 +47,53 @@
         android:id="@+id/height_unit"
         android:layout_width="64dp"
         android:layout_height="53dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:gravity="center"
         android:text="㎝"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toEndOf="@+id/height"
         app:layout_constraintTop_toTopOf="@+id/height" />
 
     <EditText
         android:id="@+id/weight"
-        android:layout_width="345dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="244dp"
+        android:layout_width="186dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="248dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:text="体重"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" /><![CDATA[
+
+    　// BMI値が出るように修正する　7/13
+        tools:layout_editor_absoluteX="69dp"
+        tools:layout_editor_absoluteY="408dp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ]]>
 
     <TextView
         android:id="@+id/weight_unit"
         android:layout_width="68dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="33dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:ems="10"
         android:gravity="center"
         android:text="㎏"
@@ -78,9 +106,9 @@
         android:id="@+id/text_bmi"
         android:layout_width="272dp"
         android:layout_height="125dp"
-        android:text="mText_bmi"　// BMI値が出るように修正する　7/13
+        android:text=""
         tools:layout_editor_absoluteX="69dp"
-        tools:layout_editor_absoluteY="408dp" />
+        tools:layout_editor_absoluteY="463dp" />
 
     <Button
         android:id="@+id/height_weight_button"
@@ -94,13 +122,20 @@
 
     <TextView
         android:id="@+id/bmi_result"
-        android:layout_width="83dp"
-        android:layout_height="29dp"
+        android:layout_width="105dp"
+        android:layout_height="23dp"
         android:text="BMI測定結果"
         app:layout_constraintBottom_toTopOf="@+id/text_bmi"
         tools:layout_editor_absoluteX="62dp" />
 
-
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="82dp"
+        android:layout_height="47dp"
+        android:text="身長"
+        android:gravity="center"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="168dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

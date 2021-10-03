@@ -6,8 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    　　 // 「日付　2021/6/30 WED」のようにする
 
+    <Button
+        android:id="@+id/snack_button"
+        android:layout_width="409dp"
+        android:layout_height="29dp"
+        android:text="間食"
+        app:backgroundTint="#ffc0cb"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="374dp" />
+
+    <TextView
+        android:id="@+id/initial_message_kg"
+        android:layout_width="46dp"
+        android:layout_height="58dp"
+        android:gravity="center"
+        android:text="kg"
+        tools:layout_editor_absoluteX="209dp"
+        tools:layout_editor_absoluteY="128dp"
 
     <Button
         android:id="@+id/morning_button"
@@ -40,12 +56,11 @@
         android:id="@+id/initial_date"
         android:layout_width="182dp"
         android:layout_height="58dp"
-        android:text="日付"
         android:gravity="center"
         android:textSize="40dp"
         tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="7dp"
         tools:layout_editor_absoluteX="114dp"
+        tools:layout_editor_absoluteY="7dp"
         tools:layout_editor_absoluteY="7dp" />
 
     <Button
@@ -56,8 +71,8 @@
         android:textColor="#808080"
         android:textSize="20dp"
         app:backgroundTint="#FFFFFF"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="4dp" />
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="1dp" />
 
     <Button
         android:id="@+id/initial_button2"
@@ -71,24 +86,43 @@
         tools:layout_editor_absoluteY="4dp" />
 
     // text　記入していない時のif文作成　する
-    <EditText
-        android:id="@+id/initial_message"
-        android:layout_width="409dp"
+
+    <TextView
+        android:id="@+id/initial_message1"
+        android:layout_width="136dp"
         android:layout_height="56dp"
-        android:text="昨日は ㎏だったよ"
         android:gravity="center"
+        android:text="昨日は"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="72dp" />
 
+
     <TextView
+        android:id="@+id/initial_message2"
+        android:layout_width="136dp"
+        android:layout_height="56dp"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/initial_message1"
+        tools:layout_editor_absoluteY="72dp" />
+
+    <TextView
+        android:id="@+id/initial_message3"
+        android:layout_width="137dp"
+        android:layout_height="56dp"
+        android:gravity="center"
+        android:text="kgだったよ"
+        app:layout_constraintStart_toEndOf="@+id/initial_message2"
+        tools:layout_editor_absoluteY="72dp" />
+
+    //　前日比を計算、自動記入されるようにする(Java)
+
+    <EditText
         android:id="@+id/initial_weight"
         android:layout_width="182dp"
         android:layout_height="58dp"
-        android:text="体重"
-        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteX="27dp"
         tools:layout_editor_absoluteY="128dp" />
 
-    //　前日比を計算、自動記入されるようにする(Java)
     <TextView
         android:id="@+id/the_day_before"
         android:layout_width="wrap_content"
@@ -101,8 +135,11 @@
 
     //アイコン
     <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true"
-        android:drawable="@drawable/moon_32" />
+
+    <item
+        android:id="@+id/item"
+        android:drawable="@drawable/moon_32"
+        android:state_selected="true" />
         <item android:drawable="@drawable/moon_32_off" />
 
     <ImageView
@@ -206,12 +243,13 @@
 
 
     //　ユーザーがメモを記入できるようにする
-    <TextView
+
+    <EditeText
         android:id="@+id/initial_memo"
-        android:layout_width="406dp"
-        android:layout_height="156dp"
-        android:text=""
-        tools:layout_editor_absoluteY="447dp" />
+        android:maxLines="5"
+        android:layout_width="413dp"
+        android:layout_height="100dp"
+        tools:layout_editor_absoluteY="503dp" />
 
     <Button
         android:id="@+id/initial_completed"
@@ -253,24 +291,24 @@
         tools:layout_editor_absoluteX="285dp"
         tools:layout_editor_absoluteY="257dp" />
 
-    <ImageView
-        android:id="@+id/image_view_snack"
-        android:layout_width="415dp"
-        android:layout_height="67dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitStart"
-        tools:layout_editor_absoluteX="-6dp"
-        tools:layout_editor_absoluteY="380dp" />
-
-
 
     //　アイコン5つ入れる
+
+    <ImageView
+        android:id="@+id/image_view_snack"
+        android:layout_width="409dp"
+        android:layout_height="88dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="403dp" />
+
     <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_selected="true"
         android:drawable="@drawable/input_32" />　
     <item android:drawable="@drawable/input_32_off" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageView_input"
         android:layout_width="60dp"
         android:layout_height="40dp"
@@ -287,7 +325,7 @@
         android:drawable="@drawable/calendar_32" />　
     <item android:drawable="@drawable/calendar_32_off" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageView_calendar"
         android:layout_width="60dp"
         android:layout_height="40dp"
@@ -306,7 +344,7 @@
         android:drawable="@drawable/graph_32" />　
     <item android:drawable="@drawable/graph_32_off" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageView_graph"
         android:layout_width="60dp"
         android:layout_height="40dp"
@@ -329,7 +367,7 @@
         tools:layout_editor_absoluteY="186dp" />
     <item android:drawable="@drawable/food_32_off" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageView_food"
         android:layout_width="60dp"
         android:layout_height="40dp"
@@ -344,11 +382,16 @@
 
 
     <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true"
-        android:drawable="@drawable/exercise_32" />
+
+    <item
+        android:drawable="@drawable/exercise_32"
+        android:state_selected="true"
+        app:layout_constraintEnd_toStartOf="parent"
+        tools:layout_editor_absoluteY="380dp" />
+
     <item android:drawable="@drawable/exercise_32_off" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageView_exercise"
         android:layout_width="60dp"
         android:layout_height="40dp"
@@ -358,7 +401,12 @@
 
     <item android:drawable="" />
 
-
+    <TextView
+        android:id="@+id/initial_before_weight"
+        android:layout_width="89dp"
+        android:layout_height="55dp"
+        app:layout_constraintStart_toEndOf="@+id/the_day_before"
+        tools:layout_editor_absoluteY="128dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
