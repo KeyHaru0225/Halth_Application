@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    /*文字の色を濃くする*/
-
-    <TextView
+<TextView
         android:id="@+id/setting"
         android:layout_width="324dp"
         android:layout_height="68dp"
@@ -16,7 +14,6 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:gravity="center"
-        android:layoutType="textPersonHeight"
         android:text="一般設定"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"

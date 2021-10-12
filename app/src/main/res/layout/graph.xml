@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -46,7 +45,8 @@
         tools:layout_editor_absoluteX="3dp"
         tools:layout_editor_absoluteY="675dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/input_32" />
+    </selector>
 
 
 
@@ -65,7 +65,8 @@
         app:srcCompat="@drawable/calendar_32"
         tools:layout_editor_absoluteY="675dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/calendar_32" />
+    </selector>
 
 
 
@@ -84,7 +85,8 @@
         app:srcCompat="@drawable/graph_32"
         tools:layout_editor_absoluteY="675dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/graph_32" />
+    </selector>
 
 
 
@@ -107,7 +109,8 @@
         app:srcCompat="@drawable/food_32"
         tools:layout_editor_absoluteY="675dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/food_32" />
+    </selector>
 
 
 
@@ -124,7 +127,8 @@
         tools:layout_editor_absoluteX="350dp"
         tools:layout_editor_absoluteY="675dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/exercise_32" />
+    </selector>
 
 
 

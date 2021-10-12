@@ -23,6 +23,8 @@ public class height_weightFragment extends AppCompatActivity {
     private TextView mText_bmi;
     private Button mHeight_weight_button;
     private BigDecimal bd;
+    private TextView mFirst_height_weight;
+    private TextView mTextView2;
 
 
 
@@ -35,6 +37,8 @@ public class height_weightFragment extends AppCompatActivity {
         mWeight = (EditText) findViewById(R.id.weight);                            // ユーザーが入力するフィールド(体重)
         mText_bmi = (TextView) findViewById(R.id.text_bmi);                        // BMI値
         mHeight_weight_button = (Button) findViewById(R.id.height_weight_button);  // ボタン
+        mFirst_height_weight = (TextView) findViewById(R.id.first_height_weight);
+        mTextView2 = (TextView) findViewById(R.id.textView2);
 
         // 画面遷移
         mHeight_weight_button.setOnClickListener(v -> {

@@ -23,7 +23,7 @@
         android:gravity="center"
         android:text="kg"
         tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="128dp"
+        tools:layout_editor_absoluteY="128dp" />
 
     <Button
         android:id="@+id/morning_button"
@@ -59,8 +59,6 @@
         android:gravity="center"
         android:textSize="40dp"
         tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="7dp"
         tools:layout_editor_absoluteY="7dp" />
 
     <Button
@@ -134,7 +132,7 @@
 
 
     //アイコン
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <selector xmlns:android="http://schemas.android.com/apk/res/android" />
 
     <item
         android:id="@+id/item"
@@ -150,11 +148,11 @@
         tools:layout_editor_absoluteX="3dp"
         tools:layout_editor_absoluteY="190dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/moon_32" />
 
 
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <selector xmlns:android="http://schemas.android.com/apk/res/android" />
     <item
         android:drawable="@drawable/food_32"
         android:state_selected="true"
@@ -170,11 +168,11 @@
         app:srcCompat="@drawable/food_32"
         tools:layout_editor_absoluteY="190dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/food_32" />
 
 
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <selector xmlns:android="http://schemas.android.com/apk/res/android" />
     <item android:state_selected="true"
         android:drawable="@drawable/toilet_32" />
         <item android:drawable="@drawable/toilet_32_off" />
@@ -187,11 +185,11 @@
         tools:layout_editor_absoluteX="123dp"
         tools:layout_editor_absoluteY="190dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/toilet_32" />
 
 
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <selector xmlns:android="http://schemas.android.com/apk/res/android" />
     <item android:state_selected="true"
         android:drawable="@drawable/exercise_32" />
         <item android:drawable="@drawable/exercise_32_off" />
@@ -204,11 +202,11 @@
         tools:layout_editor_absoluteX="183dp"
         tools:layout_editor_absoluteY="190dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/exercise_32" />
 
 
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <selector xmlns:android="http://schemas.android.com/apk/res/android" />
     <item android:state_selected="true"
         android:drawable="@drawable/smile_32" />
         <item android:drawable="@drawable/smile_32_off" />
@@ -221,11 +219,11 @@
         tools:layout_editor_absoluteX="262dp"
         tools:layout_editor_absoluteY="190dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/smile_32" />
 
 
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <selector xmlns:android="http://schemas.android.com/apk/res/android" />
     <item android:state_selected="true"
         android:drawable="@drawable/complain_32" />　
         <item android:drawable="@drawable/complain_32_off" />
@@ -238,7 +236,7 @@
         app:srcCompat="@drawable/complain_32"
         tools:layout_editor_absoluteY="190dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/complain_32" />
 
 
 
@@ -303,7 +301,7 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="403dp" />
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <selector xmlns:android="http://schemas.android.com/apk/res/android" />
     <item android:state_selected="true"
         android:drawable="@drawable/input_32" />　
     <item android:drawable="@drawable/input_32_off" />
@@ -316,11 +314,11 @@
         tools:layout_editor_absoluteX="3dp"
         tools:layout_editor_absoluteY="675dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/input_32" />
 
 
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <selector xmlns:android="http://schemas.android.com/apk/res/android" />
     <item android:state_selected="true"
         android:drawable="@drawable/calendar_32" />　
     <item android:drawable="@drawable/calendar_32_off" />
@@ -335,11 +333,11 @@
         app:srcCompat="@drawable/calendar_32"
         tools:layout_editor_absoluteY="675dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/calendar_32" />
 
 
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <selector xmlns:android="http://schemas.android.com/apk/res/android" />
     <item android:state_selected="true"
         android:drawable="@drawable/graph_32" />　
     <item android:drawable="@drawable/graph_32_off" />
@@ -354,11 +352,11 @@
         app:srcCompat="@drawable/graph_32"
         tools:layout_editor_absoluteY="675dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/graph_32" />
 
 
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <selector xmlns:android="http://schemas.android.com/apk/res/android" />
 
     <item
         android:drawable="@drawable/food_32"
@@ -377,11 +375,11 @@
         app:srcCompat="@drawable/food_32"
         tools:layout_editor_absoluteY="675dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/food_32" />
 
 
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <selector xmlns:android="http://schemas.android.com/apk/res/android" />
 
     <item
         android:drawable="@drawable/exercise_32"
@@ -399,7 +397,7 @@
         tools:layout_editor_absoluteX="350dp"
         tools:layout_editor_absoluteY="675dp" />
 
-    <item android:drawable="" />
+    <item android:drawable="@drawable/exercise_32" />
 
     <TextView
         android:id="@+id/initial_before_weight"
@@ -407,6 +405,5 @@
         android:layout_height="55dp"
         app:layout_constraintStart_toEndOf="@+id/the_day_before"
         tools:layout_editor_absoluteY="128dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

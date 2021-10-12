@@ -174,7 +174,8 @@
             app:srcCompat="@drawable/calendar_32"
             tools:layout_editor_absoluteY="675dp" />
 
-        <item android:drawable="" />
+        <item android:drawable="@drawable/calendar_32" />
+        </selector>
 
 
         <selector xmlns:android="http://schemas.android.com/apk/res/android">
@@ -196,7 +197,8 @@
             app:srcCompat="@drawable/graph_32"
             tools:layout_editor_absoluteY="675dp" />
 
-        <item android:drawable="" />
+        <item android:drawable="@drawable/graph_32" />
+        </selector>
 
 
         <selector xmlns:android="http://schemas.android.com/apk/res/android">
@@ -220,8 +222,9 @@
             app:srcCompat="@drawable/food_32"
             tools:layout_editor_absoluteY="675dp" />
 
-        <item android:drawable="" />
+        <item android:drawable="@drawable/food_32" />
 
+        </selector>
 
         <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -242,7 +245,8 @@
             tools:layout_editor_absoluteX="350dp"
             tools:layout_editor_absoluteY="675dp" />
 
-        <item android:drawable="" />
+        <item android:drawable="@drawable/exercise_32" />
 
-
+        </selector>
     </LinearLayout>
+</LinearLayout>
