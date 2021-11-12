@@ -35,19 +35,19 @@
         tools:layout_editor_absoluteY="230dp" />
 
     <Button
-        android:id="@+id/lunch_button"
+        android:id="@+id/dinner_button"
         android:layout_width="125dp"
         android:layout_height="29dp"
-        android:text="昼食"
+        android:text="夕食"
         app:backgroundTint="#ffc0cb"
         tools:layout_editor_absoluteX="285dp"
         tools:layout_editor_absoluteY="230dp" />
 
     <Button
-        android:id="@+id/evening_button"
+        android:id="@+id/lunch_button"
         android:layout_width="125dp"
         android:layout_height="29dp"
-        android:text="夕食"
+        android:text="昼食"
         app:backgroundTint="#ffc0cb"
         tools:layout_editor_absoluteX="143dp"
         tools:layout_editor_absoluteY="230dp" />

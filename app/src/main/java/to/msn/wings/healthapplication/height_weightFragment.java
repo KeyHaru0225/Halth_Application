@@ -1,7 +1,6 @@
 package to.msn.wings.healthapplication;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Button;

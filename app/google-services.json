@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "795734504855",
+    "project_id": "my-project-healthapp-4ef47",
+    "storage_bucket": "my-project-healthapp-4ef47.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795734504855:android:e643da2b29b230bedec0d2",
+        "android_client_info": {
+          "package_name": "to.msn.wings.healthapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "795734504855-esjn626d51kd1uasp81p101ntttgqi1h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA33oDdiA3YNODa4SNVvRDzzopPjZTNReg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "795734504855-esjn626d51kd1uasp81p101ntttgqi1h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
