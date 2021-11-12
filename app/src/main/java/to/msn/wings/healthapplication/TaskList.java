@@ -1,7 +1,9 @@
 package to.msn.wings.healthapplication;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -44,6 +46,7 @@ public class TaskList extends AppCompatActivity {
     private ImageButton mImageView_graph;
     private ImageButton mImageView_food;
     private ImageButton mImageView_exercise;
+    private Button mTask_button1;
 
     private boolean flg = true;
 
@@ -72,6 +75,8 @@ public class TaskList extends AppCompatActivity {
         mImageView_graph = (ImageButton) findViewById(R.id.imageView_graph);
         mImageView_food = (ImageButton) findViewById(R.id.imageView_food);
         mImageView_exercise = (ImageButton) findViewById(R.id.imageView_exercise);
+
+        mTask_button1 = (Button) findViewById(R.id.task_button1);
 
 
 
@@ -129,5 +134,104 @@ public class TaskList extends AppCompatActivity {
         } else {
             mTask_achievement.setText("0/3");
         }
+    }
+
+
+    // 現在日時の取得
+    public class GetDate {
+
+        public static void main(String[] args) {
+            // 自動生成されたメソッド・スタブ
+
+            // 当日
+            Date nowDate = new Date();
+
+            System.out.println(nowDate.toString());
+
+            // yyyy-MM-dd形式へ
+            String strDate = new SimpleDateFormat("yyyy-MM-dd").format(nowDate);
+
+
+            Calendar cal = Calendar.getInstance();
+
+            // 翌日
+            cal.setTime(nowDate);
+            cal.add(Calendar.DAY_OF_MONTH, 1);
+
+            // yyyy-MM-dd形式へ
+            String strNextDate = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime());
+
+
+            // 前日
+            cal.setTime(nowDate);
+            cal.add(Calendar.DAY_OF_MONTH, -1);
+
+
+            // yyyy-MM-dd形式へ
+            String strPreviousDate = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime());
+
+
+            // 前々日
+            cal.setTime(nowDate);
+            cal.add(Calendar.DAY_OF_MONTH, -2);
+
+
+            // yyyy-MM-dd形式へ  Dby=day before yesterday
+            String strDbyviousDate = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime());
+
+        }
+
+    }
+
+
+
+    // 前日、翌日　ボタン選択による画面遷移
+    // 翌日
+    private void mInitial_button1_OnClick(View v) {
+        InitialTestOpenHelper helper = new InitialTestOpenHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        // 前日の体重データ
+        String weight_sql = "select initial_weight from mInitial_date where strNextDate";
+        mInitial_message2 = weight_sql;
+    }
+
+    // 翌日
+    private void mInitial_button2_OnClick(View v) {
+        InitialTestOpenHelper helper = new InitialTestOpenHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        // 前日の体重データ
+        String weight_sql = "select initial_weight from initial_db where strPreviousDate";
+        mInitial_weight = (EditText) weight_sql;
+    }
+
+
+    // 前日
+    private void mTask_button1_OnClick(View v) {
+        TaskTestOpenHelper helper = new TaskTestOpenHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        // タスク１(前日)
+        String taskone_sql = "select task_one from task_db where strPreviousDate";
+        mTask1 = (EditText) taskone_sql;
+        // タスク２(前日)
+        String tasktwo_sql = "select task_two from task_db where strPreviousDate";
+        mTask2 = (EditText) tasktwo_sql;
+        // タスク３(前日)
+        String taskthree_sql = "select task_three from task_db where strPreviousDate";
+        mTask3 = (EditText) taskthree_sql;
+        // メモ１(前日)
+        String memoone_sql = "select memo_one from task_db where strPreviousDate";
+        mTask_txt1 = (EditText) memoone_sql;
+        // メモ２(前日)
+        String memotwo_sql = "select memo_two from task_db where strPreviousDate";
+        mTask_txt2 = (EditText) memotwo_sql;
+        // メモ３(前日)
+        String memothree_sql = "select memo_three from task_db where strPreviousDate";
+        mTask_txt3 = (EditText) memothree_sql;
+        // 達成率(前日)
+        String achieve_sql = "select achievement from task_db where strPreviousDate";
+        mTask_achievement = (TextView) achieve_sql;
     }
 }
