@@ -115,34 +115,43 @@ public class calendarFragment extends AppCompatActivity {
 
 
 
-        // 各画面へ遷移(イメージボタンから)
-        mImageView_calendar.setOnClickListener(v -> {
-            if (flg) {
-                Intent intent_c = new Intent(getApplication(), calendarFragment.class);
-                startActivity(intent_c);
+
+        // 各画面へ遷移
+            mImageView_calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), calendarFragment.class);
+                startActivity(intent);
             }
         });
-        mImageView_graph.setOnClickListener(v -> {
-            if (flg) {
-                Intent intent_g = new Intent(getApplication(), GraphFragment.class);
-                startActivity(intent_g);
+
+            mImageView_graph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), GraphFragment.class);
+                startActivity(intent);
             }
         });
-        mImageView_food.setOnClickListener(v -> {
-            if (flg) {
-                Intent intent_f = new Intent(getApplication(), FoodList.class);
-                startActivity(intent_f);
+
+            mImageView_food.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), FoodList.class);
+                startActivity(intent);
             }
         });
-        mImageView_exercise.setOnClickListener(v -> {
-            if (flg) {
-                Intent intent_e = new Intent(getApplication(), TaskList.class);
-                startActivity(intent_e);
+
+            mImageView_exercise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), TaskList.class);
+                startActivity(intent);
             }
         });
 
     }
 }
+
 
 
 

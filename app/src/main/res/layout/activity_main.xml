@@ -11,242 +11,39 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="match_parent"
         android:layout_marginVertical="1dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-
-        <Button
-            android:id="@+id/prevButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginVertical="10dp"
-            android:layout_marginLeft="10dp"
-            android:background="@color/colorAccent"
-            android:text="Prev" />
 
         <TextView
-            android:id="@+id/titleText"
-            android:layout_width="91dp"
-            android:layout_height="58dp"
-            android:layout_marginStart="63dp"
-            android:layout_marginLeft="63dp"
-            android:layout_marginEnd="69dp"
-            android:layout_marginRight="69dp"
-            android:layout_toStartOf="@+id/nextButton"
-            android:layout_toLeftOf="@+id/nextButton"
-            android:layout_toEndOf="@+id/prevButton"
-            android:layout_toRightOf="@+id/prevButton"
-            android:text="2021.8"
-            android:textSize="20sp" />
-
-
-        <Button
-            android:id="@+id/nextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginVertical="10dp"
-            android:layout_marginRight="1dp"
-            android:background="@color/colorAccent"
-            android:text="Next" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:orientation="horizontal"
-        android:layout_marginVertical="1dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginHorizontal="1dp"
-            android:textAlignment="center"
-            android:text="日"
-            android:background="@color/whiteColor"
-            android:textColor="@color/redColor"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="1dp"
-            android:layout_weight="1"
-            android:background="@color/whiteColor"
-            android:text="月"
-            android:textColor="@color/blackColor"
-            android:textAlignment="center"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="1dp"
-            android:textAlignment="center"
-            android:text="火"
-            android:textColor="@color/blackColor"
-            android:background="@color/whiteColor"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="1dp"
-            android:textAlignment="center"
-            android:text="水"
-            android:textColor="@color/blackColor"
-            android:background="@color/whiteColor"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="1dp"
-            android:textAlignment="center"
-            android:text="木"
-            android:textColor="@color/blackColor"
-            android:background="@color/whiteColor"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="1dp"
-            android:textAlignment="center"
-            android:text="金"
-            android:textColor="@color/blackColor"
-            android:background="@color/whiteColor"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="1dp"
-            android:textAlignment="center"
-            android:text="土"
-            android:textColor="@color/blueColor"
-            android:background="@color/whiteColor"/>
-
-        <GridView
-            android:id="@+id/calendarGridView"
+            android:id="@+id/main_text"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_marginLeft="1dp"
-            android:layout_weight="15"
-            android:horizontalSpacing="1dp"
-            android:numColumns="7"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="1dp">
+            android:layout_height="110dp"
+            android:layout_gravity="center"
+            android:text="PW/IDを入力してください"
+            android:textSize="34dp" />
 
-        </GridView>
+        <EditText
+            android:id="@+id/editTextLoginAccount"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="150dp"/>
 
+        <EditText
+            android:id="@+id/editTextLoginPass"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginTop="50dp"/>
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/main_button"
+            android:layout_width="150dp"
+            android:layout_height="41dp"
+            android:layout_marginLeft="130dp"
+            android:layout_marginTop="200dp"
+            android:text="次へ"
+            app:backgroundTint="#ffc0cb" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="129dp"
-        android:layout_marginVertical="1dp"
-        android:orientation="horizontal">
-
-        <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-        <item
-            android:drawable="@drawable/calendar_32"
-            android:state_selected="true" />　
-
-        <item android:drawable="@drawable/calendar_32_off" />
-
-        <ImageView
-            android:id="@+id/imageView_calendar"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="70dp"
-            android:layout_toStartOf="@+id/imageView_graph"
-            android:layout_toLeftOf="@+id/imageView_graph"
-            android:layout_toEndOf="@+id/imageView_graph"
-            android:layout_toRightOf="@+id/imageView_graph"
-            app:layout_constraintStart_toEndOf="@+id/imageView_input"
-            app:srcCompat="@drawable/calendar_32"
-            tools:layout_editor_absoluteY="675dp" />
-
-        <item android:drawable="@drawable/calendar_32" />
-        </selector>
-
-
-        <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-        <item
-            android:drawable="@drawable/graph_32"
-            android:state_selected="true" />　
-
-        <item android:drawable="@drawable/graph_32_off" />
-
-        <ImageView
-            android:id="@+id/imageView_graph"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginLeft="36dp"
-            android:layout_marginTop="70dp"
-            app:layout_constraintStart_toEndOf="@+id/imageView_calendar"
-            app:srcCompat="@drawable/graph_32"
-            tools:layout_editor_absoluteY="675dp" />
-
-        <item android:drawable="@drawable/graph_32" />
-        </selector>
-
-
-        <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-        <item
-            android:drawable="@drawable/food_32"
-            android:state_selected="true"
-            app:layout_constraintStart_toEndOf="@+id/imageView_moon"
-            tools:layout_editor_absoluteY="186dp" />
-
-        <item android:drawable="@drawable/food_32_off" />
-
-        <ImageView
-            android:id="@+id/imageView_food"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="70dp"
-            app:layout_constraintStart_toEndOf="@+id/imageView_graph"
-            app:srcCompat="@drawable/food_32"
-            tools:layout_editor_absoluteY="675dp" />
-
-        <item android:drawable="@drawable/food_32" />
-
-        </selector>
-
-        <selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-        <item
-            android:drawable="@drawable/exercise_32"
-            android:state_selected="true" />
-
-        <item android:drawable="@drawable/exercise_32_off" />
-
-        <ImageView
-            android:id="@+id/imageView_exercise"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="70dp"
-            app:srcCompat="@drawable/exercise_32"
-            tools:layout_editor_absoluteX="350dp"
-            tools:layout_editor_absoluteY="675dp" />
-
-        <item android:drawable="@drawable/exercise_32" />
-
-        </selector>
     </LinearLayout>
 </LinearLayout>
