@@ -22,11 +22,6 @@ public class FoodCamera extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.food_list);
-        Views[] views = {new Views(), new Lunch(), new Dinner(), new Snack()};
-
-        for (Views v : views) {
-            v.setViews();
-        }
     }
 
     class Views {
@@ -43,7 +38,7 @@ public class FoodCamera extends AppCompatActivity {
     }
 
     class Lunch extends Views {
-        public void setViews() {
+        private void setViews() {
             Button lunch_button = (Button) findViewById(R.id.food_lunch_btn);
             lunch_button.setOnClickListener(lunch_button_onClick);
         }
@@ -56,7 +51,7 @@ public class FoodCamera extends AppCompatActivity {
     }
 
     class Dinner extends Views {
-        public void setViews() {
+        private void setViews() {
             Button dinner_button = (Button) findViewById(R.id.food_dinner_btn);
             dinner_button.setOnClickListener(dinner_button_onClick);
         }
@@ -69,7 +64,7 @@ public class FoodCamera extends AppCompatActivity {
     }
 
     class Snack extends Views {
-        public void setViews() {
+        private void setViews() {
             Button snack_button = (Button) findViewById(R.id.food_snack_btn);
             snack_button.setOnClickListener(snack_button_onClick);
         }
@@ -106,6 +101,8 @@ public class FoodCamera extends AppCompatActivity {
         Intent intent = Intent.createChooser(intentCamera, "画像の選択");
         intent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] {intentGallery});
         startActivityForResult(intent, REQUEST_CHOOSER);
+
+
     }
 
     @Override
@@ -134,19 +131,17 @@ public class FoodCamera extends AppCompatActivity {
             );
 
             // 画像を設定
-            if (v.getId() == R.id.food_morning_btn) {
-                ImageView imageView = (ImageView) findViewById(R.id.food_morning_img);
-                imageView.setImageURI(resultUri);
-            } else if (v.getId() == R.id.food_lunch_btn) {
-                ImageView imageView = (ImageView) findViewById(R.id.food_lunch_img);
-                imageView.setImageURI(resultUri);
-            } else if (v.getId() == R.id.food_dinner_btn) {
-                ImageView imageView = (ImageView) findViewById(R.id.food_dinner_img);
-                imageView.setImageURI(resultUri);
-            } else if (v.getId() == R.id.food_snack_btn) {
-                ImageView imageView = (ImageView) findViewById(R.id.food_snack_img);
-                imageView.setImageURI(resultUri);
-            }
+            ImageView imageView = (ImageView) findViewById(R.id.food_morning_img);
+            imageView.setImageURI(resultUri);
+
+            ImageView imageView2 = (ImageView) findViewById(R.id.food_lunch_img);
+            imageView2.setImageURI(resultUri);
+
+            ImageView imageView3 = (ImageView) findViewById(R.id.food_lunch_img);
+            imageView3.setImageURI(resultUri);
+
+            ImageView imageView4 = (ImageView) findViewById(R.id.food_lunch_img);
+            imageView4.setImageURI(resultUri);
         }
     }
 }

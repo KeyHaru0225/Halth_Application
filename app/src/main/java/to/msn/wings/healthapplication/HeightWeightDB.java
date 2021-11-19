@@ -42,9 +42,6 @@ public class HeightWeightDB extends AppCompatActivity {
     private Button mInitial_button1;
     private Button mInitial_button2;
 
-    private String weight;
-    private String com;
-
 
 
     @Override
@@ -79,19 +76,19 @@ public class HeightWeightDB extends AppCompatActivity {
         });
 
 
-        Button readButton = findViewById(R.id.button_read);
-        readButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                readData();
-            } // 読みだし
-        });
+        //Button readButton = findViewById(R.id.button_read);
+        //readButton.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        readData();
+        //    } // 読みだし
+        //});
     }
 
 
     private void readData() {
         if(helper == null) {
-            helper = new TestOpenHelper(getApplicationContext());
+            helper = new HeightWeightTestOpenHelper(getApplicationContext());
         }
 
         if(db == null) {

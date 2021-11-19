@@ -43,7 +43,7 @@ public class initial_screenFragment extends AppCompatActivity {
     private TextView mInitial_date;
     private Button mInitial_button1;
     private Button mInitial_button2;
-    private String mInitial_message2;
+    private TextView mInitial_message2;
     private EditText mInitial_weight;
     private TextView mThe_day_before;
     private TextView mInitial_before_weight;
@@ -59,9 +59,6 @@ public class initial_screenFragment extends AppCompatActivity {
     private ImageButton mImageView_graph;
     private ImageButton mImageView_food;
     private ImageButton mImageView_exercise;
-
-    private Button mInitial_button1;
-    private Button mInitial_button2;
 
 
 
@@ -220,23 +217,13 @@ public class initial_screenFragment extends AppCompatActivity {
 
     // 前日、翌日　ボタン選択による画面遷移
     // 翌日
-    private void mInitial_button1_OnClick(View v) {
+    private void mInitial_button2_OnClick(View v) {
         InitialTestOpenHelper helper = new InitialTestOpenHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
         // 前日の体重データ
         String weight_sql = "select initial_weight from mInitial_date where strNextDate";
         mInitial_message2 = weight_sql;
-    }
-
-    // 翌日
-    private void mInitial_button2_OnClick(View v) {
-        InitialTestOpenHelper helper = new InitialTestOpenHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        // 前日の体重データ
-        String weight_sql = "select initial_weight from initial_db where strPreviousDate";
-        mInitial_weight = (EditText) weight_sql;
     }
 
     // 前日
@@ -318,7 +305,6 @@ public class initial_screenFragment extends AppCompatActivity {
         return true;
     }
 
-    static final int REQUEST_GET_IMAGE = 100;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences preference;
     private SharedPreferences.Editor editor;
     private BreakIterator editTextLoginAccount;
+    private BreakIterator editTextLoginPass;
     private Button main_button;
 
 

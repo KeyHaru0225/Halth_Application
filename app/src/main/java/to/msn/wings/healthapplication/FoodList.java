@@ -39,7 +39,7 @@ public class FoodList extends AppCompatActivity {
     private ImageButton mImageView_graph;
     private ImageButton mImageView_food;
     private ImageButton mImageView_exercise;
-    
+
     // 端末内の画像を取得
     private static final int RESULT_PICK_IMAGEFILE = 1000;
     private ImageView FoodMooningImg;
@@ -51,6 +51,13 @@ public class FoodList extends AppCompatActivity {
 
     private Button mFood_button1;
     private Button mFood_button2;
+
+    private Button mFood_morning_btn;
+    private Button mFood_lunch_btn;
+    private Button mFood_dinner_btn;
+    private Button mFood_snack_btn;
+
+    private Button mInitial_button1;
 
     private EditText mFood_morning_txt;
     private EditText mFood_lunch_txt;
@@ -89,127 +96,18 @@ public class FoodList extends AppCompatActivity {
         mFood_dinner_txt = (EditText) findViewById(R.id.food_dinner_txt);
         mFood_snack_txt = (EditText) findViewById(R.id.food_snack_txt);
 
+        mFood_morning_btn = (Button) findViewById(R.id.food_morning_btn);
+        mFood_lunch_btn = (Button) findViewById(R.id.food_lunch_btn);
+        mFood_dinner_btn = (Button) findViewById(R.id.food_dinner_btn);
+        mFood_snack_btn = (Button) findViewById(R.id.food_snack_btn);
 
-        findViewById(R.id.food_morning_btn).setOnClickListener(this);
-        findViewById(R.id.food_lunch_btn).setOnClickListener(this);
-        findViewById(R.id.food_dinner_btn).setOnClickListener(this);
-        findViewById(R.id.food_snack_btn).setOnClickListener(this);
-
-
-
-
-        // 画像パスからBitmapを作成、各ImageViewに格納　　　
-        ActivityResultLauncher<Intent> _launcherSelectSingleImage = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if(result.getResultCode() == RESULT_OK) {
-                            Intent resultData = result.getData();
-                            if(resultData != null) {
-                                Uri uri = resultData.getData();
-
-                                try {
-                                    Bitmap bmp = getBitmapFromUri(uri);
-                                    FoodMooningImg.setImageBitmap(bmp);
-                                    FoodLunchImg.setImageBitmap(bmp);
-                                    FoodDinnerImg.setImageBitmap(bmp);
-                                    FoodSnackImg.setImageBitmap(bmp);
-                                } catch(IOException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }
-                    }
+        mInitial_button1 = (Button) findViewById(R.id.initial_button1);
 
 
-                    // 画像パスからBitmapを形成、LyaoutのImageViewへセット
-                    private Bitmap getBitmapFromUri(Uri uri) throws IOException {
-                        ParcelFileDescriptor parcelFileDescriptor =
-                                getContentResolver().openFileDescription(uri, "r");
-                        FileDescription fileDescription = parcelFileDescriptor.getFileDescriptor();
-                        Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
-                        parcelFileDescriptor.close();
-                        return image;
-                    }
+        // 現在日時の取得
+        class GetDate {
 
-
-                    // 画像フォルダの読み込みを設定
-                    public void onClick(View v) {
-                    Intent intent_m = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-                        intent_m.addCategory(Intent.CATEGORY_OPENABLE);
-                        intent_m.setType("image/*");
-                        intent_m.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
-                        Intent chooserIntent = Intent.createChooser(intent_m, "単一画像の選択");
-
-                        _launcherSelectSingleImage.launch(chooserIntent);
-                    };
-
-                    public void onClick(View v) {
-                        Intent intent_m = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-                        intent_m.addCategory(Intent.CATEGORY_OPENABLE);
-                        intent_m.setType("image/*");
-                        intent_m.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
-                        Intent chooserIntent = Intent.createChooser(intent_m, "単一画像の選択");
-
-                        _launcherSelectSingleImage.launch(chooserIntent);
-                    };
-
-                    public void onClick(View v) {
-                        Intent intent_m = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-                        intent_m.addCategory(Intent.CATEGORY_OPENABLE);
-                        intent_m.setType("image/*");
-                        intent_m.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
-                        Intent chooserIntent = Intent.createChooser(intent_m, "単一画像の選択");
-
-                        _launcherSelectSingleImage.launch(chooserIntent);
-                    };
-
-                    public void onClick(View v) {
-                        Intent intent_m = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-                        intent_m.addCategory(Intent.CATEGORY_OPENABLE);
-                        intent_m.setType("image/*");
-                        intent_m.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
-                        Intent chooserIntent = Intent.createChooser(intent_m, "単一画像の選択");
-
-                        _launcherSelectSingleImage.launch(chooserIntent);
-                    };
-                });
-
-
-
-        // 各画面へ遷移(イメージボタンから)
-        mImageView_calendar.setOnClickListener(v -> {
-            if (flg) {
-                Intent intent_c = new Intent(getApplication(), calendarFragment.class);
-                startActivity(intent_c);
-            }
-        });
-        mImageView_graph.setOnClickListener(v -> {
-            if (flg) {
-                Intent intent_g = new Intent(getApplication(), GraphFragment.class);
-                startActivity(intent_g);
-            }
-        });
-        mImageView_food.setOnClickListener(v -> {
-            if (flg) {
-                Intent intent_f = new Intent(getApplication(), FoodList.class);
-                startActivity(intent_f);
-            }
-        });
-        mImageView_exercise.setOnClickListener(v -> {
-            if (flg) {
-                Intent intent_e = new Intent(getApplication(), TaskList.class);
-                startActivity(intent_e);
-            }
-        });
-
-    }
-
-    // 現在日時の取得
-    public class GetDate {
-
-        public static void main(String[] args) {
+            public void main(String[] args) {
 
                 // 自動生成されたメソッド・スタブ
 
@@ -248,39 +146,192 @@ public class FoodList extends AppCompatActivity {
 
                 // yyyy-MM-dd形式へ  Dby=day before yesterday
                 String strDbyviousDate = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime());
+            }
         }
 
-    }
 
-    // 前日　ボタン選択による画面遷移
-    private void mInitial_button1_OnClick(View v) {
-        FoodTestOpenHelper helper = new FoodTestOpenHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        // 朝食
-        String morningimg_sql = "select morning_blob from initial_db where strPreviousDate";
-        mImage_view_morning = (ImageView) morningimg_sql;
-        // 昼食
-        String lunchimg_sql = "select lunch_blob from initial_db where strPreviousDate";
-        mImage_view_lunch = (ImageView) lunchimg_sql;
-        // 夕食
-        String dinnerimg_sql = "select dinner_blob from initial_db where strPreviousDate";
-        mImage_view_evening = (ImageView) dinnerimg_sql;
-        // 間食
-        String snackimg_sql = "select snack_blob from initial_db where strPreviousDate";
-        mImage_view_snack = (ImageView) snackimg_sql;
-        // 朝食メモ
-        String mormemo_sql = "select txt_one from initial_db where strPreviousDate";
-        mFood_morning_txt = (EditText) mormemo_sql;
-        // 昼食メモ
-        String lunmemo_sql = "select txt_two from initial_db where strPreviousDate";
-        mFood_lunch_txt = (EditText) lunmemo_sql;
-        // 夕食メモ
-        String dinmemo_sql = "select txt_three from initial_db where strPreviousDate";
-        mFood_dinner_txt = (EditText) dinmemo_sql;
-        // 間食メモ
-        String snackmemo_sql = "select txt_four from initial_db where strPreviousDate";
-        mFood_snack_txt = (EditText) snackmemo_sql;
-    }
+        // 前日　ボタン選択による画面遷移
+        mInitial_button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-}
+                FoodTestOpenHelper helper = new FoodTestOpenHelper(this);
+                SQLiteDatabase db = helper.getWritableDatabase();
+                ContentValues values = new ContentValues();
+
+                // 朝食
+                String morningimg_sql = "select morning_blob from initial_db where strPreviousDate";
+                mImage_view_morning = (ImageView) morningimg_sql;
+                // 昼食
+                String lunchimg_sql = "select lunch_blob from initial_db where strPreviousDate";
+                mImage_view_lunch = (ImageView) lunchimg_sql;
+                // 夕食
+                String dinnerimg_sql = "select dinner_blob from initial_db where strPreviousDate";
+                mImage_view_evening = (ImageView) dinnerimg_sql;
+                // 間食
+                String snackimg_sql = "select snack_blob from initial_db where strPreviousDate";
+                mImage_view_snack = (ImageView) snackimg_sql;
+                // 朝食メモ
+                String mormemo_sql = "select txt_one from initial_db where strPreviousDate";
+                mFood_morning_txt = (EditText) mormemo_sql;
+                // 昼食メモ
+                String lunmemo_sql = "select txt_two from initial_db where strPreviousDate";
+                mFood_lunch_txt = (EditText) lunmemo_sql;
+                // 夕食メモ
+                String dinmemo_sql = "select txt_three from initial_db where strPreviousDate";
+                mFood_dinner_txt = (EditText) dinmemo_sql;
+                // 間食メモ
+                String snackmemo_sql = "select txt_four from initial_db where strPreviousDate";
+                mFood_snack_txt = (EditText) snackmemo_sql;
+
+            }
+        });
+
+
+        // 画像パスからBitmapを作成、各ImageViewに格納　　　
+        ActivityResultLauncher<Intent> _launcherSelectSingleImage = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if (result.getResultCode() == RESULT_OK) {
+                            Intent resultData = result.getData();
+                            if (resultData != null) {
+                                Uri uri = resultData.getData();
+
+                                try {
+                                    Bitmap bmp = getBitmapFromUri(uri);
+                                    FoodMooningImg.setImageBitmap(bmp);
+                                    FoodLunchImg.setImageBitmap(bmp);
+                                    FoodDinnerImg.setImageBitmap(bmp);
+                                    FoodSnackImg.setImageBitmap(bmp);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                        }
+                    }
+                });
+                        // 画像フォルダの読み込みを設定
+                        mFood_morning_btn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent_m = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                                intent_m.addCategory(Intent.CATEGORY_OPENABLE);
+                                intent_m.setType("image/*");
+                                intent_m.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                                Intent chooserIntent = Intent.createChooser(intent_m, "単一画像の選択");
+                                _launcherSelectSingleImage.launch(chooserIntent);
+                            }
+
+                            // 画像パスからBitmapを形成、LyaoutのImageViewへセット
+                            private Bitmap getBitmapFromUri(Uri uri) throws IOException {
+                                ParcelFileDescriptor parcelFileDescriptor =
+                                        getContentResolver().openFileDescription(uri, "r");
+                                FileDescription fileDescription = parcelFileDescriptor.getFileDescriptor();
+                                Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+                                parcelFileDescriptor.close();
+                                return image;
+                            }
+                        });
+
+                        mFood_lunch_btn.setOnClickListener(new View.OnClickListener() {
+                            public void onClick(View v) {
+                                Intent intent_m = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                                intent_m.addCategory(Intent.CATEGORY_OPENABLE);
+                                intent_m.setType("image/*");
+                                intent_m.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                                Intent chooserIntent = Intent.createChooser(intent_m, "単一画像の選択");
+
+                                _launcherSelectSingleImage.launch(chooserIntent);
+
+                            }
+
+                            // 画像パスからBitmapを形成、LyaoutのImageViewへセット
+                            private Bitmap getBitmapFromUri(Uri uri) throws IOException {
+                                ParcelFileDescriptor parcelFileDescriptor =
+                                        getContentResolver().openFileDescription(uri, "r");
+                                FileDescription fileDescription = parcelFileDescriptor.getFileDescriptor();
+                                Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+                                parcelFileDescriptor.close();
+                                return image;
+                            }
+                        });
+
+                        mFood_dinner_btn.setOnClickListener(new View.OnClickListener() {
+                            public void onClick(View v) {
+                                Intent intent_m = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                                intent_m.addCategory(Intent.CATEGORY_OPENABLE);
+                                intent_m.setType("image/*");
+                                intent_m.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                                Intent chooserIntent = Intent.createChooser(intent_m, "単一画像の選択");
+
+                                _launcherSelectSingleImage.launch(chooserIntent);
+
+                            }
+
+                            // 画像パスからBitmapを形成、LyaoutのImageViewへセット
+                            private Bitmap getBitmapFromUri(Uri uri) throws IOException {
+                                ParcelFileDescriptor parcelFileDescriptor =
+                                        getContentResolver().openFileDescription(uri, "r");
+                                FileDescription fileDescription = parcelFileDescriptor.getFileDescriptor();
+                                Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+                                parcelFileDescriptor.close();
+                                return image;
+                            }
+                        });
+
+                        mFood_snack_btn.setOnClickListener(new View.OnClickListener() {
+                            public void onClick(View v) {
+                                Intent intent_m = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                                intent_m.addCategory(Intent.CATEGORY_OPENABLE);
+                                intent_m.setType("image/*");
+                                intent_m.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                                Intent chooserIntent = Intent.createChooser(intent_m, "単一画像の選択");
+
+                                _launcherSelectSingleImage.launch(chooserIntent);
+                            }
+
+                            // 画像パスからBitmapを形成、LyaoutのImageViewへセット
+                            private Bitmap getBitmapFromUri(Uri uri) throws IOException {
+                                ParcelFileDescriptor parcelFileDescriptor =
+                                        getContentResolver().openFileDescription(uri, "r");
+                                FileDescription fileDescription = parcelFileDescriptor.getFileDescriptor();
+                                Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+                                parcelFileDescriptor.close();
+                                return image;
+                            }
+                        });
+
+
+                        // 各画面へ遷移(イメージボタンから)
+                        mImageView_calendar.setOnClickListener(v -> {
+                            if (flg) {
+                                Intent intent_c = new Intent(getApplication(), calendarFragment.class);
+                                startActivity(intent_c);
+                            }
+                        });
+                        mImageView_graph.setOnClickListener(v -> {
+                            if (flg) {
+                                Intent intent_g = new Intent(getApplication(), GraphFragment.class);
+                                startActivity(intent_g);
+                            }
+                        });
+                        mImageView_food.setOnClickListener(v -> {
+                            if (flg) {
+                                Intent intent_f = new Intent(getApplication(), FoodList.class);
+                                startActivity(intent_f);
+                            }
+                        });
+                        mImageView_exercise.setOnClickListener(v -> {
+                            if (flg) {
+                                Intent intent_e = new Intent(getApplication(), TaskList.class);
+                                startActivity(intent_e);
+                            }
+                        });
+
+
+                    }
+
+    }

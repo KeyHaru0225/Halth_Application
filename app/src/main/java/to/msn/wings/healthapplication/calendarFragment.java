@@ -47,7 +47,7 @@ public class calendarFragment extends AppCompatActivity {
         setContentView(R.layout.calendar);
 
         mCal_date = (TextView) findViewById(R.id.cal_date);
-        titleText = (TextView) findViewById(R.id.titleText);
+        // titleText = (TextView) findViewById(R.id.titleText);
         prevButton = (Button) findViewById(R.id.prevButton);
         nextButton = (Button) findViewById(R.id.nextButton);
 

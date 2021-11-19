@@ -14,6 +14,7 @@ public class SettingCalendar extends AppCompatActivity {
         //TODO 全体的にまだレイアウトが完成していないから未着手
         setContentView(R.layout.setting_main_screen_calendar);
 
+        /*
         mSetting_main_screen_calendar_button1 = (Button) findViewById(R.id.setting_main_screen_calendar_button1);
 
         // 画面遷移 前に戻る
@@ -21,6 +22,8 @@ public class SettingCalendar extends AppCompatActivity {
             Intent intent_mib = new Intent(getApplication(), SettingMainScreen.class);
             startActivity(intent_mib);
         });
+
+         */
 
     }
 }

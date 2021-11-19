@@ -2,17 +2,12 @@ package to.msn.wings.healthapplication;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.AbsListView;
-import android.content.Intent;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,22 +29,29 @@ public class CalendarAdapter extends BaseAdapter {
 
     private boolean flg = true;
 
-    private ImageButton mImageView_calendar;
-    private ImageButton mImageView_graph;
-    private ImageButton mImageView_food;
-    private ImageButton mImageView_exercise;
+    //カスタムセルを拡張したらここでWigetを定義
+    private static class ViewHolder {
+        public TextView dateText;
+    }
 
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.calendar);
+    // private ImageButton mImageView_calendar;
+    // private ImageButton mImageView_graph;
+    // private ImageButton mImageView_food;
+    // private ImageButton mImageView_exercise;
+
+
+
+    //protected void onCreate(Bundle savedInstanceState) {
+      //  super.onCreate(savedInstanceState);
+      //  setContentView(R.layout.calendar);
 
         // イメージボタンを設定
-        mImageView_calendar = (ImageButton) findViewById(R.id.imageView_calendar);
-        mImageView_graph = (ImageButton) findViewById(R.id.imageView_graph);
-        mImageView_food = (ImageButton) findViewById(R.id.imageView_food);
-        mImageView_exercise = (ImageButton) findViewById(R.id.imageView_exercise);
+        // mImageView_calendar = (ImageButton) findViewById(R.id.imageView_calendar);
+        // mImageView_graph = (ImageButton) findViewById(R.id.imageView_graph);
+        // mImageView_food = (ImageButton) findViewById(R.id.imageView_food);
+        // mImageView_exercise = (ImageButton) findViewById(R.id.imageView_exercise);
 
-        // 各画面へ遷移
+        /* 各画面へ遷移
         mImageView_calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,9 +82,8 @@ public class CalendarAdapter extends BaseAdapter {
                 Intent intent = new Intent(getApplication(), TaskList.class);
                 startActivity(intent);
             }
-        });
-    }
-
+        }); */
+    //}
 
 
     public CalendarAdapter(Context context) {
@@ -99,15 +100,16 @@ public class CalendarAdapter extends BaseAdapter {
 
         @Override
         public View getView ( int position, View convertView, ViewGroup parent){
-            RecyclerView.ViewHolder holder;
+            CalendarAdapter.ViewHolder holder;
             if (convertView == null) {
                 convertView = mLayoutInflater.inflate(R.layout.calendar_cell, null);
                 holder = new ViewHolder();
                 holder.dateText = convertView.findViewById(R.id.dateText);
                 convertView.setTag(holder);
             } else {
-                holder = (ViewHolder) convertView.getTag();
+                holder = (CalendarAdapter.ViewHolder) convertView.getTag();
             }
+
 
             // セルのサイズを指定
             float dp = mContext.getResources().getDisplayMetrics().density;

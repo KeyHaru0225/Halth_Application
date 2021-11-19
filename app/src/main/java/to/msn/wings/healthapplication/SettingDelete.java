@@ -27,10 +27,12 @@ public class SettingDelete extends AppCompatActivity {
 
 
         // 全データの削除
+        /*
         mSetting_data_button2.setOnClickListener(v -> {
             ActivityManager am = (ActivityManager) context.getSystemService(Service.ACTIVITY_SERVICE);
             am.clearApplicationUserData();
         });
+         */
 
 
 
