@@ -1,17 +1,11 @@
 package to.msn.wings.healthapplication;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.EditText;
 import android.widget.Button;
-import android.widget.Toast;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.chip.Chip;
+
 
 public class SettingMainScreen extends AppCompatActivity {
     private Button mSetting_main_screen_button1;

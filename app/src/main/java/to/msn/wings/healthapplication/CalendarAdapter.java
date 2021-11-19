@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.AbsListView;
 import android.content.Intent;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,7 +25,7 @@ import java.util.Locale;
 
 
 
-public class CalendarAdapter<view> extends BaseAdapter {
+public class CalendarAdapter extends BaseAdapter {
 
     private List<Date> dateArray = new ArrayList();
     private Context mContext;
@@ -37,12 +39,11 @@ public class CalendarAdapter<view> extends BaseAdapter {
     private ImageButton mImageView_food;
     private ImageButton mImageView_exercise;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar);
 
-        // イメージボダンを設定
+        // イメージボタンを設定
         mImageView_calendar = (ImageButton) findViewById(R.id.imageView_calendar);
         mImageView_graph = (ImageButton) findViewById(R.id.imageView_graph);
         mImageView_food = (ImageButton) findViewById(R.id.imageView_food);
@@ -80,12 +81,9 @@ public class CalendarAdapter<view> extends BaseAdapter {
                 startActivity(intent);
             }
         });
+    }
 
 
-        // カスタムセルを拡張したらここでWigetを定義
-        private static class ViewHolder {
-            public TextView dateText;
-        }
 
     public CalendarAdapter(Context context) {
             mContext = context;
@@ -101,7 +99,7 @@ public class CalendarAdapter<view> extends BaseAdapter {
 
         @Override
         public View getView ( int position, View convertView, ViewGroup parent){
-            ViewHolder holder;
+            RecyclerView.ViewHolder holder;
             if (convertView == null) {
                 convertView = mLayoutInflater.inflate(R.layout.calendar_cell, null);
                 holder = new ViewHolder();
@@ -179,4 +177,4 @@ public class CalendarAdapter<view> extends BaseAdapter {
             this.notifyDataSetChanged();
         }
     }
-}
+

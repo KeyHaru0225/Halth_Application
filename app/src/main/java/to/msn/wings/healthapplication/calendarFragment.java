@@ -1,42 +1,19 @@
 package to.msn.wings.healthapplication;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.EditText;
-import android.view.LayoutInflater;
 import android.view.View;
 
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.ContextMenu;
-import android.view.LayoutInflater;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.Toast;
 import android.widget.TextView;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.AbsListView;
-import android.provider.MediaStore;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -81,6 +58,33 @@ public class calendarFragment extends AppCompatActivity {
         mImageView_exercise = (ImageButton) findViewById(R.id.imageView_exercise);
 
 
+        // 各画面へ遷移
+        mImageView_calendar.setOnClickListener(view -> {
+            if (flg) {
+                Intent intent_c = new Intent(getApplication(), calendarFragment.class);
+                startActivity(intent_c);
+            }
+        });
+        mImageView_graph.setOnClickListener(view -> {
+            if (flg) {
+                Intent intent_g = new Intent(getApplication(), GraphFragment.class);
+                startActivity(intent_g);
+            }
+        });
+        mImageView_food.setOnClickListener(view -> {
+            if (flg) {
+                Intent intent_f = new Intent(getApplication(), FoodList.class);
+                startActivity(intent_f);
+            }
+        });
+        mImageView_exercise.setOnClickListener(view -> {
+            if (flg) {
+                Intent intent_e = new Intent(getApplication(), TaskList.class);
+                startActivity(intent_e);
+            }
+        });
+
+
 
         // 前月、次月に遷移
         prevButton.setOnClickListener(new View.OnClickListener() {
@@ -112,45 +116,8 @@ public class calendarFragment extends AppCompatActivity {
             final Date mCal_date = new Date(System.currentTimeMillis());
             return df.format(mCal_date);
         }
-
-
-
-
-        // 各画面へ遷移
-            mImageView_calendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), calendarFragment.class);
-                startActivity(intent);
-            }
-        });
-
-            mImageView_graph.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), GraphFragment.class);
-                startActivity(intent);
-            }
-        });
-
-            mImageView_food.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), FoodList.class);
-                startActivity(intent);
-            }
-        });
-
-            mImageView_exercise.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), TaskList.class);
-                startActivity(intent);
-            }
-        });
-
     }
-}
+
 
 
 

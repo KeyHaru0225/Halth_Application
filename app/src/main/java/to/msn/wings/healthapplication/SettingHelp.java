@@ -1,16 +1,12 @@
 package to.msn.wings.healthapplication;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Button;
-import android.widget.Toast;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
+
 
 public class SettingHelp extends AppCompatActivity {
 
@@ -25,6 +21,13 @@ public class SettingHelp extends AppCompatActivity {
 
         mSetting_help_button1 = (Button) findViewById(R.id.setting_help_button1);
         mSetting_help_button2 = (Button) findViewById(R.id.setting_help_button2);
+
+
+        // 画面遷移 前に戻る
+        mSetting_help_button1.setOnClickListener(v -> {
+            Intent intent_mib = new Intent(getApplication(), SettingMain.class);
+            startActivity(intent_mib);
+        });
 
 
         findViewById(R.id.setting_help_button2).setOnClickListener(new View.OnClickListener() {
@@ -91,15 +94,5 @@ public class SettingHelp extends AppCompatActivity {
             t.show();
         }
     }
+ }
 
-
-
-        // 画面遷移 前に戻る
-        mSetting_help_button1.setOnClickListener(v -> {
-            Intent intent_mib = new Intent(getApplication(), SettingMain.class);
-            startActivity(intent_mib);
-        });
-
-
-    }
-}

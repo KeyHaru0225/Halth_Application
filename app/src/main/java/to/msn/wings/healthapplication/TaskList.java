@@ -1,26 +1,15 @@
 package to.msn.wings.healthapplication;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.TextView;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.content.Intent;
-import android.provider.MediaStore;
 
 import androidx.appcompat.app.AppCompatActivity;
 

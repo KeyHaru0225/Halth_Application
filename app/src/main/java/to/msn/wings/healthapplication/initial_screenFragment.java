@@ -1,5 +1,5 @@
 package to.msn.wings.healthapplication;
-package com.example.multiintenttest1;  //　ブクマ参照
+// package com.example.multiintenttest1;  //　ブクマ参照
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,8 +8,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -28,9 +26,7 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.provider.MediaStore;
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.tabs.TabLayout;
@@ -102,7 +98,7 @@ public class initial_screenFragment extends AppCompatActivity {
         // 前日、翌日　画面遷移
         // 前日
         mInitial_button1.setOnClickListener( v -> {
-            Intent intent_b1 = new Intent(getApplication(), );
+            Intent intent_b1 = new Intent(getApplication(), initial_screenFragment.class);
             startActivity(intent_b1);
         });
 
@@ -113,6 +109,33 @@ public class initial_screenFragment extends AppCompatActivity {
             startActivity(intent_b2);
         });
 
+
+
+        // 各画面へ遷移(イメージボタンから)
+        mImageView_calendar.setOnClickListener(v -> {
+            if (flg) {
+                Intent intent_c = new Intent(getApplication(), calendarFragment.class);
+                startActivity(intent_c);
+            }
+        });
+        mImageView_graph.setOnClickListener(v -> {
+            if (flg) {
+                Intent intent_g = new Intent(getApplication(), GraphFragment.class);
+                startActivity(intent_g);
+            }
+        });
+        mImageView_food.setOnClickListener(v -> {
+            if (flg) {
+                Intent intent_f = new Intent(getApplication(), FoodList.class);
+                startActivity(intent_f);
+            }
+        });
+        mImageView_exercise.setOnClickListener(v -> {
+            if (flg) {
+                Intent intent_e = new Intent(getApplication(), TaskList.class);
+                startActivity(intent_e);
+            }
+        });
 
 
         // 各画面へ遷移
@@ -243,35 +266,6 @@ public class initial_screenFragment extends AppCompatActivity {
         String memo_sql = "select initial_memo from initial_db whrere strPreviousDate";
         mImage_view_snack = (ImageView) memo_sql;
     }
-
-
-    // 各画面へ遷移(イメージボタンから)
-        mImageView_calendar.setOnClickListener(v -> {
-        if (flg) {
-            Intent intent_c = new Intent(getApplication(), calendarFragment.class);
-            startActivity(intent_c);
-        }
-    });
-        mImageView_graph.setOnClickListener(v -> {
-        if (flg) {
-            Intent intent_g = new Intent(getApplication(), GraphFragment.class);
-            startActivity(intent_g);
-        }
-    });
-        mImageView_food.setOnClickListener(v -> {
-        if (flg) {
-            Intent intent_f = new Intent(getApplication(), FoodList.class);
-            startActivity(intent_f);
-        }
-    });
-        mImageView_exercise.setOnClickListener(v -> {
-        if (flg) {
-            Intent intent_e = new Intent(getApplication(), TaskList.class);
-            startActivity(intent_e);
-        }
-    });
-
-}
 
 
 

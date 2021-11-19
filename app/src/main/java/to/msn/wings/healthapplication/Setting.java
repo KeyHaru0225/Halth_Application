@@ -1,7 +1,6 @@
 package to.msn.wings.healthapplication;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.widget.Button;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;

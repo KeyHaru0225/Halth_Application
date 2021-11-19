@@ -35,30 +35,28 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Date;
+
 
 
 public class GraphFragment<view> extends AppCompatActivity {
+
+    private ImageButton mImageView_calendar;
+    private ImageButton mImageView_graph;
+    private ImageButton mImageView_food;
+    private ImageButton mImageView_exercise;
+
+    private LineChart mChart;
+    private boolean flg = true;
+
+    private InitialTestOpenHelper helper;
+    private SQLiteDatabase db;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.graph);
 
-        private ImageButton mImageView_calendar;
-        private ImageButton mImageView_graph;
-        private ImageButton mImageView_food;
-        private ImageButton mImageView_exercise;
-
-        private LineChart mChart;
-        private boolean flg = true;
-
-        private InitialTestOpenHelper helper;
-        private SQLiteDatabase db;
 
 
         // イメージボダンを設定
@@ -95,18 +93,6 @@ public class GraphFragment<view> extends AppCompatActivity {
         });
 
 
-        // 現在日時の取得
-        public static String getNowDate () {
-            final DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-            final Date mFood_date = new Date(System.currentTimeMillis());
-            return df.format(mFood_date);
-        }
-
-
-        @Override
-        protected void onCreate (Bundle savedInstanceState){
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
 
             mChart = findViewById(R.id.line_chart);
 
@@ -145,8 +131,6 @@ public class GraphFragment<view> extends AppCompatActivity {
         }
 
 
-        //TODO 消すかも データベースにアクセスする
-        readData();
 
         private void readData() {
             if(helper == null) {
@@ -186,7 +170,15 @@ public class GraphFragment<view> extends AppCompatActivity {
         private void setData () {
 
             // データベース参照
-            Cursor c = db.query("initial.sqlite", null, "id=?", new String[]{"id=5000"}, null, null, null,
+            Cursor c = db.query(
+                    "initial_db",
+                    new String[] {"initial_date", "initial_weight"},
+                    "id=?", new String[]{"id=5000"},
+                    null,
+                    null,
+                    null,
+                    null
+            );
             try{
                 if (c.moveToNext()) {
                     initial_date = c.getString(c.getColumnIndex("initial_date"));
@@ -244,4 +236,3 @@ public class GraphFragment<view> extends AppCompatActivity {
             }
         }
     }
-}

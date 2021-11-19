@@ -1,25 +1,10 @@
 package to.msn.wings.healthapplication;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.database.Cursor;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import java.io.ByteArrayOutputStream;
-import java.sql.Blob;
 
 public class InitialTestOpenHelper extends SQLiteOpenHelper {
     // データベースのバージョン

@@ -1,7 +1,6 @@
 package to.msn.wings.healthapplication;
 
 import android.content.ContentValues;
-import android.support.v7.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.database.sqlite.SQLiteDatabase;
@@ -18,7 +17,7 @@ import java.sql.Blob;
 public class HeightWeightDB extends AppCompatActivity {
 
     private static final String COLUMN_ID = "id";
-    private static final String COLUMN_BLOB = ""
+    private static final String COLUMN_BLOB = "";
 
     private TextView textView;
 
@@ -35,7 +34,7 @@ public class HeightWeightDB extends AppCompatActivity {
     private TextView task_achievement;                                               // タスクの達成率
     private EditText food_morning_txt, food_lunch_txt, food_dinner_txt, food_snack_txt;  // 各食事に関するメモ
 
-    private TestOpenHelper helper;
+    private InitialTestOpenHelper helper;
     private SQLiteDatabase db;
     private EditText mInitial_weight;
     private TextView mInitial_com;      // 前日比
@@ -46,7 +45,7 @@ public class HeightWeightDB extends AppCompatActivity {
     private String weight;
     private String com;
 
-    public
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

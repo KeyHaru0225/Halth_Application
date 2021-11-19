@@ -1,6 +1,6 @@
 package to.msn.wings.healthapplication;
 
-import android.app.Activity;
+
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,20 +14,17 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.content.Intent;
-import android.provider.MediaStore;
 import android.net.Uri;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -77,10 +74,10 @@ public class FoodList extends AppCompatActivity {
         mImageView_food = (ImageButton) findViewById(R.id.imageView_food);
         mImageView_exercise = (ImageButton) findViewById(R.id.imageView_exercise);
         // 各食事ボタンを設定
-        FoodMooningImg = (ImageView)findViewById(R.id.food_morning_img);
-        FoodLunchImg = (ImageView)findViewById(R.id.food_lunch_img);
-        FoodDinnerImg = (ImageView)findViewById(R.id.food_dinner_img);
-        FoodSnackImg = (ImageView)findViewById(R.id.food_snack_img);
+        FoodMooningImg = (ImageView) findViewById(R.id.food_morning_img);
+        FoodLunchImg = (ImageView) findViewById(R.id.food_lunch_img);
+        FoodDinnerImg = (ImageView) findViewById(R.id.food_dinner_img);
+        FoodSnackImg = (ImageView) findViewById(R.id.food_snack_img);
 
         mFood_date = (TextView) findViewById(R.id.food_date);
 
@@ -93,70 +90,91 @@ public class FoodList extends AppCompatActivity {
         mFood_snack_txt = (EditText) findViewById(R.id.food_snack_txt);
 
 
-        // 画像フォルダの読み込みを設定
-        findViewById(R.id.food_morning_btn).setOnClickListener(v -> {
-            Intent intent_m = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-            intent_m.addCategory(Intent.CATEGORY_OPENABLE);
-            intent_m.setType("image/*");
-            startActivityForResult(intent_m, RESULT_PICK_IMAGEFILE);
-        });
-        findViewById(R.id.food_lunch_btn).setOnClickListener(v -> {
-            Intent intent_l = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-            intent_l.addCategory(Intent.CATEGORY_OPENABLE);
-            intent_l.setType("image/*");
-            startActivityForResult(intent_l, RESULT_PICK_IMAGEFILE);
-        });
-        findViewById(R.id.food_dinner_btn).setOnClickListener(v -> {
-            Intent intent_d = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-            intent_d.addCategory(Intent.CATEGORY_OPENABLE);
-            intent_d.setType("image/*");
-            startActivityForResult(intent_d, RESULT_PICK_IMAGEFILE);
-        });
-        findViewById(R.id.food_snack_btn).setOnClickListener(v -> {
-            Intent intent_s = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-            intent_s.addCategory(Intent.CATEGORY_OPENABLE);
-            intent_s.setType("image/*");
-            startActivityForResult(intent_s, RESULT_PICK_IMAGEFILE);
-        });
+        findViewById(R.id.food_morning_btn).setOnClickListener(this);
+        findViewById(R.id.food_lunch_btn).setOnClickListener(this);
+        findViewById(R.id.food_dinner_btn).setOnClickListener(this);
+        findViewById(R.id.food_snack_btn).setOnClickListener(this);
+
+
 
 
         // 画像パスからBitmapを作成、各ImageViewに格納　　　
-        @Override
-        public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
-            if(requestCode == RESULT_PICK_IMAGEFILE && resultCode == RESULT_OK) {
-                Uri uri = null;
-                if(resultData != null) {
-                    uri = resultData.getData();
+        ActivityResultLauncher<Intent> _launcherSelectSingleImage = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                new ActivityResultCallback<ActivityResult>() {
+                    @Override
+                    public void onActivityResult(ActivityResult result) {
+                        if(result.getResultCode() == RESULT_OK) {
+                            Intent resultData = result.getData();
+                            if(resultData != null) {
+                                Uri uri = resultData.getData();
 
-                    try {
-                        Bitmap bmp = getBitmapFromUri(uri);
-                        FoodMooningImg.setImageBitmap(bmp);
-                        FoodLunchImg.setImageBitmap(bmp);
-                        FoodDinnerImg.setImageBitmap(bmp);
-                        FoodSnackImg.setImageBitmap(bmp);
-                    } catch(IOException e) {
-                        e.printStackTrace();
+                                try {
+                                    Bitmap bmp = getBitmapFromUri(uri);
+                                    FoodMooningImg.setImageBitmap(bmp);
+                                    FoodLunchImg.setImageBitmap(bmp);
+                                    FoodDinnerImg.setImageBitmap(bmp);
+                                    FoodSnackImg.setImageBitmap(bmp);
+                                } catch(IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
                     }
-                }
-            }
-        }
-
-        private Bitmap getBitmapFromUri(Uri uri) throws IOException {
-            ParcelFileDescriptor parcelFileDescriptor =
-                    getContentResolver().openFileDescription(uri, "r");
-            FileDescription fileDescription = parcelFileDescriptor.getFileDescriptor();
-            Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
-            parcelFileDescriptor.close();
-            return image;
-        }
 
 
-        // 現在日時の取得
-        public static String getNowDate() {
-            final DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-            final Date mFood_date = new Date(System.currentTimeMillis());
-            return df.format(mFood_date);
-        }
+                    // 画像パスからBitmapを形成、LyaoutのImageViewへセット
+                    private Bitmap getBitmapFromUri(Uri uri) throws IOException {
+                        ParcelFileDescriptor parcelFileDescriptor =
+                                getContentResolver().openFileDescription(uri, "r");
+                        FileDescription fileDescription = parcelFileDescriptor.getFileDescriptor();
+                        Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+                        parcelFileDescriptor.close();
+                        return image;
+                    }
+
+
+                    // 画像フォルダの読み込みを設定
+                    public void onClick(View v) {
+                    Intent intent_m = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                        intent_m.addCategory(Intent.CATEGORY_OPENABLE);
+                        intent_m.setType("image/*");
+                        intent_m.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                        Intent chooserIntent = Intent.createChooser(intent_m, "単一画像の選択");
+
+                        _launcherSelectSingleImage.launch(chooserIntent);
+                    };
+
+                    public void onClick(View v) {
+                        Intent intent_m = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                        intent_m.addCategory(Intent.CATEGORY_OPENABLE);
+                        intent_m.setType("image/*");
+                        intent_m.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                        Intent chooserIntent = Intent.createChooser(intent_m, "単一画像の選択");
+
+                        _launcherSelectSingleImage.launch(chooserIntent);
+                    };
+
+                    public void onClick(View v) {
+                        Intent intent_m = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                        intent_m.addCategory(Intent.CATEGORY_OPENABLE);
+                        intent_m.setType("image/*");
+                        intent_m.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                        Intent chooserIntent = Intent.createChooser(intent_m, "単一画像の選択");
+
+                        _launcherSelectSingleImage.launch(chooserIntent);
+                    };
+
+                    public void onClick(View v) {
+                        Intent intent_m = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+                        intent_m.addCategory(Intent.CATEGORY_OPENABLE);
+                        intent_m.setType("image/*");
+                        intent_m.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                        Intent chooserIntent = Intent.createChooser(intent_m, "単一画像の選択");
+
+                        _launcherSelectSingleImage.launch(chooserIntent);
+                    };
+                });
 
 
 
@@ -192,44 +210,44 @@ public class FoodList extends AppCompatActivity {
     public class GetDate {
 
         public static void main(String[] args) {
-            // TODO 自動生成されたメソッド・スタブ
 
-            // 当日
-            Date nowDate = new Date();
+                // 自動生成されたメソッド・スタブ
 
-            System.out.println(nowDate.toString());
+                // 当日
+                Date nowDate = new Date();
 
-            // yyyy-MM-dd形式へ
-            String strDate = new SimpleDateFormat("yyyy-MM-dd").format(nowDate);
+                System.out.println(nowDate.toString());
 
-
-            Calendar cal = Calendar.getInstance();
-
-            // 翌日
-            cal.setTime(nowDate);
-            cal.add(Calendar.DAY_OF_MONTH, 1);
-
-            // yyyy-MM-dd形式へ
-            String strNextDate = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime());
+                // yyyy-MM-dd形式へ
+                String strDate = new SimpleDateFormat("yyyy-MM-dd").format(nowDate);
 
 
-            // 前日
-            cal.setTime(nowDate);
-            cal.add(Calendar.DAY_OF_MONTH, -1);
+                Calendar cal = Calendar.getInstance();
+
+                // 翌日
+                cal.setTime(nowDate);
+                cal.add(Calendar.DAY_OF_MONTH, 1);
+
+                // yyyy-MM-dd形式へ
+                String strNextDate = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime());
 
 
-            // yyyy-MM-dd形式へ
-            String strPreviousDate = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime());
+                // 前日
+                cal.setTime(nowDate);
+                cal.add(Calendar.DAY_OF_MONTH, -1);
 
 
-            // 前々日
-            cal.setTime(nowDate);
-            cal.add(Calendar.DAY_OF_MONTH, -2);
+                // yyyy-MM-dd形式へ
+                String strPreviousDate = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime());
 
 
-            // yyyy-MM-dd形式へ  Dby=day before yesterday
-            String strDbyviousDate = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime());
+                // 前々日
+                cal.setTime(nowDate);
+                cal.add(Calendar.DAY_OF_MONTH, -2);
 
+
+                // yyyy-MM-dd形式へ  Dby=day before yesterday
+                String strDbyviousDate = new SimpleDateFormat("yyyy-MM-dd").format(cal.getTime());
         }
 
     }

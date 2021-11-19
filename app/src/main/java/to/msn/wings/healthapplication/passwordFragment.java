@@ -3,11 +3,8 @@ package to.msn.wings.healthapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Button;
+
 
 public class passwordFragment extends AppCompatActivity {
 

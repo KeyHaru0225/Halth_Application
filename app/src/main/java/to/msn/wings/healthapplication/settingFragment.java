@@ -1,20 +1,14 @@
 package to.msn.wings.healthapplication;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.EditText;
 import android.widget.Button;
 import android.content.Intent;
 import com.google.android.material.chip.Chip;
 
-import java.util.Objects;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.Navigation;
+
 
 
 public class settingFragment extends AppCompatActivity {
@@ -37,7 +31,7 @@ public class settingFragment extends AppCompatActivity {
         mSetting_completed.setOnClickListener(view -> {
             Intent intent = new Intent(getApplication(), helloFragment.class);
             startActivity(intent);
-        })
+        });
 
         mSetting_chip1 = (Chip) findViewById(R.id.setting_chip1); //丸ボタン１
         mSetting_chip2 = (Chip) findViewById(R.id.setting_chip2); //丸ボタン２

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 public class TaskDB extends AppCompatActivity {
 
     private TextView mTask_date;
@@ -70,6 +71,7 @@ public class TaskDB extends AppCompatActivity {
 
             }
         });
+    }
 
         //TODO 読みだしは飛ばした
 
@@ -99,8 +101,7 @@ public class TaskDB extends AppCompatActivity {
             cursor.close();
         }
 
-        private void insertData(SQLiteDatabase db, String date, String taskone, String tasktwo, String taskthree,
-                String memoone, String memotwo, String memothree, double achieve) {
+        private void insertData(SQLiteDatabase db, String date, String taskone, String tasktwo, String taskthree, String memoone, String memotwo, String memothree, double achieve) {
 
             ContentValues values = new ContentValues();
             values.put("task_date", date);
@@ -117,4 +118,4 @@ public class TaskDB extends AppCompatActivity {
 
     }
 
-}
+

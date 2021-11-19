@@ -43,7 +43,6 @@ public class FoodCamera extends AppCompatActivity {
     }
 
     class Lunch extends Views {
-        @Override
         public void setViews() {
             Button lunch_button = (Button) findViewById(R.id.food_lunch_btn);
             lunch_button.setOnClickListener(lunch_button_onClick);
@@ -57,7 +56,6 @@ public class FoodCamera extends AppCompatActivity {
     }
 
     class Dinner extends Views {
-        @Override
         public void setViews() {
             Button dinner_button = (Button) findViewById(R.id.food_dinner_btn);
             dinner_button.setOnClickListener(dinner_button_onClick);
@@ -71,7 +69,6 @@ public class FoodCamera extends AppCompatActivity {
     }
 
     class Snack extends Views {
-        @Override
         public void setViews() {
             Button snack_button = (Button) findViewById(R.id.food_snack_btn);
             snack_button.setOnClickListener(snack_button_onClick);
