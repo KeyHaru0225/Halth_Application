@@ -1,5 +1,6 @@
-package to.msn.wings.healthapplication;
+    package to.msn.wings.healthapplication;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,7 +23,7 @@ import java.sql.Blob;
 public class FoodDB extends AppCompatActivity {
 
     private TextView mFood_date;
-    private Blob mImage_view_morning, mImage_view_lunch, mImage_view_dinner, mImage_view_snack;
+    private ImageView mImage_view_morning, mImage_view_lunch, mImage_view_dinner, mImage_view_snack;
     private EditText mMemo_one, mMemo_two, mMemo_three, mMemo_four;
 
     private FoodTestOpenHelper helper;
@@ -46,6 +47,15 @@ public class FoodDB extends AppCompatActivity {
 
         mFood_btn = (Button) findViewById(R.id.food_btn);
 
+        final int[]  baseIds = new int[] {
+                R.id.food_morning_img,
+                R.id.food_lunch_img,
+                R.id.food_dinner_img,
+                R.id.food_snack_img
+        };
+
+
+
         mFood_btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -67,25 +77,25 @@ public class FoodDB extends AppCompatActivity {
                 String food_snack_txt = mMemo_four.getText().toString();
 
                 // DB格納可能にするため drawble→ bitmap→ byte[] 変換
-                Drawable drawableM = mImage_view_morning.getDrawable(R.id.food_morning_img);
+                @SuppressLint("UseCompatLoadingForDrawables") Drawable drawableM = getResources().getDrawable(baseIds[0]);
                 Bitmap bitmapM = ((BitmapDrawable) drawableM).getBitmap();
                 ByteArrayOutputStream bosM = new ByteArrayOutputStream();
                 bitmapM.compress(Bitmap.CompressFormat.JPEG, 100, bosM);
                 byte[] bytemorning = bosM.toByteArray();
 
-                Drawable drawableL = mImage_view_lunch.getDrawable(R.id.food_lunch_img);
+                @SuppressLint("UseCompatLoadingForDrawables") Drawable drawableL = getResources().getDrawable(baseIds[1]);
                 Bitmap bitmapL = ((BitmapDrawable) drawableL).getBitmap();
                 ByteArrayOutputStream bosL = new ByteArrayOutputStream();
                 bitmapL.compress(Bitmap.CompressFormat.JPEG, 100, bosL);
                 byte[] bytelunch = bosL.toByteArray();
 
-                Drawable drawableE = mImage_view_dinner.getDrawable(R.id.food_dinner_img);
+                @SuppressLint("UseCompatLoadingForDrawables") Drawable drawableE = getResources().getDrawable(baseIds[2]);
                 Bitmap bitmapE = ((BitmapDrawable) drawableE).getBitmap();
                 ByteArrayOutputStream bosE = new ByteArrayOutputStream();
                 bitmapE.compress(Bitmap.CompressFormat.JPEG, 100, bosE);
                 byte[] bytedinner = bosE.toByteArray();
 
-                Drawable drawableS = mImage_view_snack.getDrawable(R.id.food_snack_img);
+                @SuppressLint("UseCompatLoadingForDrawables") Drawable drawableS = getResources().getDrawable(baseIds[3]);
                 Bitmap bitmapS = ((BitmapDrawable) drawableS).getBitmap();
                 ByteArrayOutputStream bosS = new ByteArrayOutputStream();
                 bitmapS.compress(Bitmap.CompressFormat.JPEG, 100, bosS);
@@ -109,7 +119,7 @@ public class FoodDB extends AppCompatActivity {
 
         Cursor cursor = db.query(
                 "initial_db",
-                new String[]{"morning_blob", "lunch_blob", "dinner_blob", "snack_blob", "txt_one", "txt_two", "txt_three", "txt_four"},
+                new String[]{"food_date", "morning_blob", "lunch_blob", "dinner_blob", "snack_blob", "txt_one", "txt_two", "txt_three", "txt_four"},
                 null,
                 null,
                 null,
@@ -123,13 +133,20 @@ public class FoodDB extends AppCompatActivity {
         cursor.close();
     }
 
-    private void insertData(SQLiteDatabase db, Blob morning, Blob lunch, Blob dinner, Blob snack, String txtone, String txttwo, String txtthree, String txtfour) {
+
+    private void insertData(SQLiteDatabase db, String fdate, byte[] morning, byte[] lunch, byte[] dinner, byte[] snack, String txtone, String txttwo, String txtthree, String txtfour) {
+
+        String str_f1 = new String(morning);
+        String str_f2 = new String(lunch);
+        String str_f3 = new String(dinner);
+        String str_f4 = new String(snack);
 
         ContentValues values = new ContentValues();
-        values.put("morning_blob", morning);
-        values.put("lunch_blob", lunch);
-        values.put("dinner_blob", dinner);
-        values.put("snack_blob", snack);
+        values.put("food_date", fdate);
+        values.put("morning_blob", str_f1);
+        values.put("lunch_blob", str_f2);
+        values.put("dinner_blob", str_f3);
+        values.put("snack_blob", str_f4);
         values.put("txt_one", txtone);
         values.put("txt_two", txttwo);
         values.put("txt_three", txtthree);

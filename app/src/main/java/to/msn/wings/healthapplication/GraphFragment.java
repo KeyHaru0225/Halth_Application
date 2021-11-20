@@ -137,7 +137,7 @@ public class GraphFragment<view> extends AppCompatActivity {
                 helper = new InitialTestOpenHelper(getApplicationContext());
             }
 
-            if(db = null) {
+            if(db == null) {
                 db = helper.getReadableDatabase();
             }
             Log.d("debug","**********Cursor");
