@@ -49,11 +49,13 @@ public class InitialTestOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        /*
         // テーブル作成
         // SQLiteファイルがなければSQLiteファイルが作成される
         db.execSQL(
                 SQL_CREATE_ENTRIES
         );
+         */
 
         Log.d("debug", "onCreate(SQLiteDatabase db)");
 

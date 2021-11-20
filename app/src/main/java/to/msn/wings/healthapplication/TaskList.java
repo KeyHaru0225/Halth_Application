@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.DriverManager;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -108,7 +109,6 @@ public class TaskList extends AppCompatActivity {
 
 
     // チェックボックス判定
-    @Override
     public void onClick(View view) {
         if(mCheckBox1.isChecked() == true && mCheckBox2.isChecked() == true && mCheckBox3.isChecked() == true) {
             mTask_achievement.setText("3/3 !!!");
@@ -129,7 +129,7 @@ public class TaskList extends AppCompatActivity {
     // 現在日時の取得
     public class GetDate {
 
-        public static void main(String[] args) {
+        public void main(String[] args) {
             // 自動生成されたメソッド・スタブ
 
             // 当日
@@ -201,6 +201,7 @@ public class TaskList extends AppCompatActivity {
         TaskTestOpenHelper helper = new TaskTestOpenHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         ContentValues values = new ContentValues();
+
         // タスク１(前日)
         String taskone_sql = "select task_one from task_db where strPreviousDate";
         mTask1 = (EditText) taskone_sql;

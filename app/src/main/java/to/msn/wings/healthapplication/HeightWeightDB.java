@@ -34,7 +34,7 @@ public class HeightWeightDB extends AppCompatActivity {
     private TextView task_achievement;                                               // タスクの達成率
     private EditText food_morning_txt, food_lunch_txt, food_dinner_txt, food_snack_txt;  // 各食事に関するメモ
 
-    private InitialTestOpenHelper helper;
+    private HeightWeightTestOpenHelper helper;
     private SQLiteDatabase db;
     private EditText mInitial_weight;
     private TextView mInitial_com;      // 前日比
@@ -62,7 +62,7 @@ public class HeightWeightDB extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(helper == null) {
-                    helper = new TestOpenHelper(getApplicationContext());
+                    helper = new HeightWeightTestOpenHelper(getApplication());
                 }
 
                 if(db == null) {
@@ -108,29 +108,16 @@ public class HeightWeightDB extends AppCompatActivity {
 
         cursor.moveToFirst();
 
-        StringBuilder sbr = new StringBuilder();
-
-        for (int i = 0; i < cursor.getCount(); i++) {
-            sbr.append(cursor.getString(0));
-            sbr.append(": ");
-            sbr.append(cursor.getInt(1));
-            sbr.append("\n");
-            cursor.moveToNext();
-        }
-
         // 忘れずに！
         cursor.close();
-
-        Log.d("debug","**********"+sbr.toString());
-        textView.setText(sbr.toString());
     }
 
-    private void insertData(SQLiteDatabase db, String com, int price) {
+    private void insertData(SQLiteDatabase db, String weight, int bmi) {
 
         ContentValues values = new ContentValues();
-        values.put("company", com);
-        values.put("stockprice", price);
+        values.put("weight", weight);
+        values.put("bmi", bmi);
 
-        db.insert("testdb", null, values);
+        db.insert("healthdb", null, values);
     }
 }

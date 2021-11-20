@@ -118,7 +118,7 @@ public class FoodDB extends AppCompatActivity {
         Log.d("debug", "**********Cursor");
 
         Cursor cursor = db.query(
-                "initial_db",
+                "food_db",
                 new String[]{"food_date", "morning_blob", "lunch_blob", "dinner_blob", "snack_blob", "txt_one", "txt_two", "txt_three", "txt_four"},
                 null,
                 null,

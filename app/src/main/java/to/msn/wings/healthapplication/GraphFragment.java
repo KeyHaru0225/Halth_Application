@@ -164,7 +164,7 @@ public class GraphFragment<view> extends AppCompatActivity {
             cursor.close();
 
             Log.d("debug","**********"+str.toString());
-            textView.setText(str.toString());
+            // textView.setText(str.toString());
         }
 
         private void setData () {
@@ -181,15 +181,14 @@ public class GraphFragment<view> extends AppCompatActivity {
             );
             try{
                 if (c.moveToNext()) {
-                    initial_date = c.getString(c.getColumnIndex("initial_date"));
-                    initial_weight = c.getDouble(c.getColumnIndex("initial_weight"));
+                    String initial_date = c.getString(c.getColumnIndex("initial_date"));
+                    Double initial_weight = c.getDouble(c.getColumnIndex("initial_weight"));
                 }
             } finally {
                 c.close();
             }
 
             // Entry()を使ってLineDataSetに設定できる形に変更してarrayを新しく作成
-
             int data[] = {initial_weight};
 
             ArrayList<Entry> values = new ArrayList<>();

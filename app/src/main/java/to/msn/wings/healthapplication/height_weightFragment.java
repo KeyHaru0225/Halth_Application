@@ -28,8 +28,8 @@ public class height_weightFragment extends AppCompatActivity {
     private String  caution = "数値を入力してください";
     private String a = "";
     private String b = "";
-    private String mH = Double.valueOf(mHeight).toString;
-    private String mW = Double.valueOf(mWeight).toString;
+    private String mH = mHeight.getText().toString();
+    private String mW = mWeight.getText().toString();
 
 
     @Override

@@ -153,9 +153,10 @@ public class initial_screenFragment extends AppCompatActivity {
             startActivity(intent_e);
             }});
 
-        //TODO 謎9/28
+        /*
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(pager);
+         */
     }
 
 
@@ -170,7 +171,7 @@ public class initial_screenFragment extends AppCompatActivity {
     // 現在日時の取得
     public class GetDate {
 
-        public static void main(String[] args) {
+        public void main(String[] args) {
             // TODO 自動生成されたメソッド・スタブ
 
             // 当日

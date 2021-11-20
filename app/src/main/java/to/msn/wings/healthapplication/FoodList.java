@@ -3,6 +3,7 @@ package to.msn.wings.healthapplication;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteCursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,6 +18,11 @@ import android.view.View;
 import android.net.Uri;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -63,6 +69,11 @@ public class FoodList extends AppCompatActivity {
     private EditText mFood_lunch_txt;
     private EditText mFood_dinner_txt;
     private EditText mFood_snack_txt;
+
+    private SQLiteDatabase db;
+
+    Connection connection = null;
+    Statement statement = null;
 
 
     @Override
@@ -155,39 +166,87 @@ public class FoodList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                FoodTestOpenHelper helper = new FoodTestOpenHelper(this);
+                FoodTestOpenHelper helper = new FoodTestOpenHelper(getApplicationContext());
                 SQLiteDatabase db = helper.getWritableDatabase();
                 ContentValues values = new ContentValues();
 
-                // 朝食
-                String morningimg_sql = "select morning_blob from initial_db where strPreviousDate";
-                mImage_view_morning = (ImageView) morningimg_sql;
-                // 昼食
-                String lunchimg_sql = "select lunch_blob from initial_db where strPreviousDate";
-                mImage_view_lunch = (ImageView) lunchimg_sql;
-                // 夕食
-                String dinnerimg_sql = "select dinner_blob from initial_db where strPreviousDate";
-                mImage_view_evening = (ImageView) dinnerimg_sql;
-                // 間食
-                String snackimg_sql = "select snack_blob from initial_db where strPreviousDate";
-                mImage_view_snack = (ImageView) snackimg_sql;
-                // 朝食メモ
-                String mormemo_sql = "select txt_one from initial_db where strPreviousDate";
-                mFood_morning_txt = (EditText) mormemo_sql;
-                // 昼食メモ
-                String lunmemo_sql = "select txt_two from initial_db where strPreviousDate";
-                mFood_lunch_txt = (EditText) lunmemo_sql;
-                // 夕食メモ
-                String dinmemo_sql = "select txt_three from initial_db where strPreviousDate";
-                mFood_dinner_txt = (EditText) dinmemo_sql;
-                // 間食メモ
-                String snackmemo_sql = "select txt_four from initial_db where strPreviousDate";
-                mFood_snack_txt = (EditText) snackmemo_sql;
+                try {
+                    // sqliteのJDBCが存在するかチェック（存在しないとClassNotFoundException）
+                    Class.forName("org.sqlite.JDBC");
+
+                    // DBに接続（c:\db\initial_dbに接続）
+                    connection = DriverManager.getConnection("jdbc:sqlite:/c:/db/initial_db.db");
+                    statement = connection.createStatement();
+
+                    // 朝食　クエリ発行
+                    String morningimg_sql = "select morning_blob from initial_db where strPreviousDate";
+                    ResultSet rs1 = statement.executeQuery(morningimg_sql);
+
+                    // 昼食
+                    String lunchimg_sql = "select lunch_blob from initial_db where strPreviousDate";
+                    ResultSet rs2 = statement.executeQuery(lunchimg_sql);
+
+                    // 夕食
+                    String dinnerimg_sql = "select dinner_blob from initial_db where strPreviousDate";
+                    ResultSet rs3 = statement.executeQuery(dinnerimg_sql);
+
+                    // 間食
+                    String snackimg_sql = "select snack_blob from initial_db where strPreviousDate";
+                    ResultSet rs4 = statement.executeQuery(snackimg_sql);
+
+                    // 朝食メモ
+                    String mormemo_sql = "select txt_one from initial_db where strPreviousDate";
+                    ResultSet rs5 = statement.executeQuery(mormemo_sql);
+
+                    // 昼食メモ
+                    String lunmemo_sql = "select txt_two from initial_db where strPreviousDate";
+                    ResultSet rs6 = statement.executeQuery(lunmemo_sql);
+
+                    // 夕食メモ
+                    String dinmemo_sql = "select txt_three from initial_db where strPreviousDate";
+                    ResultSet rs7 = statement.executeQuery(dinmemo_sql);
+
+                    // 間食メモ
+                    String snackmemo_sql = "select txt_four from initial_db where strPreviousDate";
+                    ResultSet rs8 = statement.executeQuery(snackmemo_sql);
+
+                    ResultSet[] resultset = {rs1, rs2, rs3, rs4, rs5, rs6, rs7, rs8};
+
+                    for (int i = 0; i < 8; i++) {
+                        // カラム名を指定して値を取得
+                        System.out.println(resultset[i].getString("ID"));
+                    }
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } finally {
+                    // ステートメントとコネクションはクローズする
+                    try {
+                        if (statement != null) {
+                            statement.close();
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        if (connection != null) {
+                            connection.close();
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+
 
             }
+
         });
+    }
+}
 
 
+        /*
         // 画像パスからBitmapを作成、各ImageViewに格納　　　
         ActivityResultLauncher<Intent> _launcherSelectSingleImage = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -335,3 +394,5 @@ public class FoodList extends AppCompatActivity {
                     }
 
     }
+
+         */
