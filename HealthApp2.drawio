@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-12-01T07:05:35.110Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" etag="hWCd6tJBm5ku6XcYpMBJ" version="14.3.0" type="github">
+<mxfile host="app.diagrams.net" modified="2021-12-01T07:07:14.356Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" etag="cD37pP_Ev_mvjvUWS65u" version="14.3.0" type="github">
   <diagram id="LSPMP-w4RNwfpnUbGc-Q" name="ページ1">
     <mxGraphModel dx="1108" dy="450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -405,6 +405,9 @@
               <mxPoint x="1490" y="380.5" />
             </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="-SbBaC57bwo80Ey5Qgcd-143" value="※各設定画面遷移可能" style="text;html=1;resizable=0;autosize=1;align=center;verticalAlign=middle;points=[];fillColor=none;strokeColor=none;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="1470" y="561" width="140" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
